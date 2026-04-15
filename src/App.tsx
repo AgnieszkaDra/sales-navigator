@@ -3,9 +3,13 @@ import reactLogo from './assets/react.svg'
 import viteLogo from './assets/vite.svg'
 import heroImg from './assets/hero.png'
 import './App.css'
+import { useProperties } from "./useProperties";
+
+
 
 function App() {
   const [count, setCount] = useState(0)
+   const { properties } = useProperties();
 
   return (
     <>
@@ -114,8 +118,30 @@ function App() {
 
       <div className="ticks"></div>
       <section id="spacer"></section>
-    </>
-  )
+
+
+    
+
+
+
+    <div>
+      {properties.map((p) => (
+        <div key={p.id}>
+          <h3>{p.title}</h3>
+          <p>{p.location}</p>
+          <p>{p.price} zł</p>
+          <p>{p.status}</p>
+          <p>{p.floor}</p>
+          <p>{p.rooms} pokoje</p>
+
+          <p>
+            Balkon: {p.features?.balcony ? "tak" : "nie"}
+          </p>
+        </div>
+      ))}
+    </div></>
+  );
+  
 }
 
 export default App
