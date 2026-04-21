@@ -6,7 +6,7 @@ export type Property = {
   price: number;
 
   status: "available" | "reserved" | "sold";
-  floor: string;
+  floor: number;
   area: number;
   rooms: number;
 
