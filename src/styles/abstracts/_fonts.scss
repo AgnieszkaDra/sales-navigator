@@ -1,0 +1,93 @@
+@use "sass:map";
+@use './sizes' as sizes;
+
+@mixin fluid-type-preset($name) {
+  $preset: map.get($typography, $name);
+  font-size: clamp(
+    map.get($preset, min),
+    map.get($preset, vw),
+    map.get($preset, max)
+  );
+}
+
+$typography: (
+  // h1-header: (min: 2.75rem, vw: 5vw, max: 4.5rem),
+  h1-header: (min: 2rem, vw: 5vw, max: 2.75rem),
+  h1-subpage: (min: 1.7rem, vw: 3vw, max: 2.125rem),
+  h2-header: (min: 2.25rem, vw: 4vw, max: 3.625rem),
+  h2-title: (min: 1.625rem, vw: 2.7vw, max: 2.375rem),
+  h3-title: (min: 1.7rem, vw: 3vw, max: 2.125rem),
+  h4-title: (min: 1.375rem, vw: 2.25vw, max: 1.75rem),
+  h5-lead: (min: 0.9rem, vw: 1.4vw, max: 1.05rem),
+  paragraph: (min: 1rem, vw: 1.5vw, max: 1.125rem), 
+  input: (min: 0.875rem, vw: 0.875rem, max: 0.875rem),
+);
+
+.h1-header {
+  @include fluid-type-preset(h1-header);
+  font-weight: map-get(sizes.$font-weight, medium);
+  line-height: 1.22;
+  letter-spacing: .15em;
+}
+
+.h1-subpage {
+  @include fluid-type-preset(h1-subpage);
+  font-weight: map-get(sizes.$font-weight, large);
+  line-height: 76px;
+  letter-spacing: 2px;
+  margin: 40px 0;
+}
+
+.h2-header {
+  @include fluid-type-preset(h2-header);
+  font-weight: map-get(sizes.$font-weight, large);
+  line-height: 70px;
+  letter-spacing: -1px;
+}
+
+.h2-title {
+  @include fluid-type-preset(h2-title);
+  font-weight: map-get(sizes.$font-weight, large);
+  line-height: 60px;
+  letter-spacing: -1px;
+}
+
+.h3-title {
+  @include fluid-type-preset(h3-title);
+  font-weight: map-get(sizes.$font-weight, medium); 
+  line-height: 50px; 
+  letter-spacing: -0.5px; 
+}
+
+.h4-title {
+  @include fluid-type-preset(h4-title);
+  font-weight: map-get(sizes.$font-weight, medium);
+  line-height: 42px;
+  letter-spacing: -0.35px;
+}
+
+.h5-lead {
+  @include fluid-type-preset(h5-lead);
+
+  display: block;
+  font-weight: map-get(sizes.$font-weight, large); // bold equivalent
+  line-height: normal;
+  letter-spacing: normal;
+
+  margin-block-start: 1.67em;
+  margin-block-end: 1.67em;
+  margin-inline-start: 0;
+  margin-inline-end: 0;
+
+  unicode-bidi: isolate;
+}
+
+.paragraph {
+  @include fluid-type-preset(paragraph);
+  line-height: 1.6;
+  letter-spacing: 0; 
+}
+
+.input-text {
+  @include fluid-type-preset(input);
+}

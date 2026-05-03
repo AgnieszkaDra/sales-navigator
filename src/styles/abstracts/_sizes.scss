@@ -1,0 +1,55 @@
+$container-padding: clamp(1rem, 9vw, 4rem);
+
+$font-size: (
+  small: 0.75rem,
+  medium: 1.3rem,
+  large: 2rem,
+  extra-large: 3rem
+);
+
+$padding: (
+  small: 0.5rem 1rem,
+  medium: 0.75rem 1.5rem,
+  large: 1.5rem
+);
+
+$spacing: (
+  small: 0.5rem,
+  medium: 1rem,
+  large: 1.5rem
+);
+
+
+$container-padding: clamp(1rem, 9vw, 4rem);
+$margin-top: 3rem;
+
+$spacing-0: 0;
+$spacing-100: 0.5rem;   
+$spacing-200: 1rem;     
+$spacing-300: 1.5rem;   
+$spacing-400: 2rem;     
+$spacing-500: 2.5rem; 
+$spacing-600: 3rem;
+$spacing-700: 3.5rem;
+$spacing-800: 4rem;
+
+$padding: (
+  small: 0.5rem 1rem,
+  medium: 0.75rem 1.5rem,
+  large: 1.5rem
+);
+
+$font-size: (
+  small: 0.75rem,
+  extra-small: 1rem,
+  normal: 1.2rem,
+  medium: 1.8rem,
+  large: 2.4rem,
+  extra-large: 4.2rem
+);
+
+$font-weight: (
+  small: 400,
+  medium: 500,
+  large: 700
+);

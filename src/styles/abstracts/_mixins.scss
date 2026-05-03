@@ -1,0 +1,26 @@
+@use './media-query' as mq;
+
+@mixin flexAbsoluteCenter {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+}
+
+@mixin absCenter {
+  position: absolute;
+  top: 50%;
+  left: 50%;
+  transform: translate(-50%, -50%);
+}
+
+@mixin responsive-max-width($sizes) {
+  @each $breakpoint, $values in $sizes {
+    @include mq.respond($breakpoint) {
+      max-width: clamp(
+        nth($values, 1),  
+        nth($values, 2),  
+        nth($values, 3)   
+      );
+    }
+  }
+}

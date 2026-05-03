@@ -1,0 +1,26 @@
+@use 'sass:color';
+
+$color-white: white;
+$color-darkWhite: rgb(204, 204, 204);
+$color-smokeWhite: rgb(232, 228, 228);
+$color-veryLightGrey: rgb(226, 226, 226);
+$color-lightGrey: rgb(153, 153, 153);
+$color-darkGrey: rgb(40, 40, 40);
+$color-choco: rgb(227, 217, 196);
+$color-text: rgb(68, 68, 68);
+$color-fontLight: rgb(122, 122, 122);
+$color-orangeBrown: rgb(227, 132, 79);
+
+
+:root {
+    --color-white: white;
+    --color-smokeWhite: rgb(245, 245, 245);
+    --color-veryLightGrey: rgb(226, 226, 226);
+    --color-lightGrey: rgb(153, 153, 153);
+    --color-darkGrey: rgb(40, 40, 40);
+    --color-choco: rgb(227, 217, 196);
+    --color-fontLight: rgb(122, 122, 122)
+    --color-text: rgb(68, 68, 68);
+    --color-orangeBrown: rgb(227, 132, 79);
+  }
+

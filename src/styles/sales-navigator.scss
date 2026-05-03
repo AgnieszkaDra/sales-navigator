@@ -1,0 +1,184 @@
+@use './abstracts/index' as *;
+
+.sales-navigator {
+  &__title {
+    text-transform: uppercase;
+    text-align: center;
+    letter-spacing: 0.05em;
+  }
+}
+
+.searcher {
+  padding-top: 36px;
+}
+
+.custom-select {
+  position: relative;
+  width: 100%;
+
+  &__trigger {
+    width: 100%;
+    display: grid;
+    grid-template-columns: 90% 10%;
+
+    padding: 12px;
+    border: 1px solid $color-smokeWhite;
+    background: $color-white;
+    cursor: pointer;
+
+    transition: border-color 0.2s ease, box-shadow 0.2s ease;
+
+    & > * {
+      display: flex;
+      align-items: center;
+      cursor: default;
+      pointer-events: none;
+      text-align: center;
+      white-space: nowrap;
+    }
+    
+    &:hover {
+      border-color: $color-darkGrey;
+    }
+
+    &:focus {
+      outline: none;
+      border-color: $color-orangeBrown;
+      box-shadow: 0 0 0 2px rgba(0, 0, 0, 0.05);
+    }
+
+    &.is-open {
+      border-color: $color-orangeBrown;
+    }
+  }
+
+  &__value {
+    color: $color-fontLight;
+    text-align: start;
+    overflow: hidden;
+    text-overflow: ellipsis;
+    white-space: nowrap;
+    width: 50%;
+    &::before,
+    &::after {
+      display: block;
+      
+      content: "";
+      flex: 1;
+      height: 1px;
+      background: $color-fontLight;
+      content: "";
+    }
+    &::before {
+      margin-right: 10px;
+    }
+    &::after {
+      margin-left: 10px;
+    }
+  }
+
+  &__icon {
+    grid-column: 2 / 3;
+    height: calc(100% + 24px);
+    margin-top: -12px;
+    @include flexAbsoluteCenter;
+    border-left: 1px solid $color-smokeWhite;
+
+    &::after {
+      content: "";
+      position: absolute;
+      content: "";
+      top: 50%;
+      margin-top: -3px;
+      width: 0;
+      height: 0;
+      border-left: 6px solid transparent;
+      border-top: 6px solid $color-orangeBrown;
+      border-right: 6px solid transparent;
+      margin-right: -12px;
+
+      transition: transform 0.2s ease;
+    }
+  }
+
+  &__trigger.is-open &__icon::after {
+    transform: rotate(180deg);
+  }
+
+  &__menu {
+    position: absolute;
+    top: calc(100% + 4px);
+    left: 0;
+    right: 0;
+    color: $color-fontLight;
+    background: $color-choco;
+    border: 1px solid $color-smokeWhite;
+    border-radius: 4px;
+
+    z-index: 10;
+    max-height: 240px;
+    width: 115%;
+    overflow-y: auto;
+
+    box-shadow: 0 4px 12px rgba(0, 0, 0, 0.08);
+  }
+
+  &__option {
+    padding: 10px 12px;
+    cursor: pointer;
+    display: flex;
+    align-items: center;
+
+    transition: background 0.15s ease;
+
+    &:hover {
+      background: $color-white;
+    }
+
+    &.is-highlighted {
+      background: var(--color-foreground);
+    }
+
+    &.is-selected {
+      color: $color-white;
+      background: $color-fontLight;
+    }
+  }
+
+  &__option:first-child.is-selected .custom-select__option-text::before,
+  &__option:first-child.is-selected .custom-select__option-text::after{
+    background-color: $color-white;
+  }
+
+  &__option:first-child .custom-select__option-text{
+    display: flex;
+    align-items: center;
+    cursor: default;
+    pointer-events: none;
+  }
+
+  &__option:first-child .custom-select__option-text {
+    flex: 0 1 40%;
+    text-align: center;
+    font-size: 0.85rem;
+    white-space: nowrap;
+}
+
+  &__option:first-child .custom-select__option-text::before,
+  &__option:first-child .custom-select__option-text::after {
+    content: "";
+    flex: 1;
+    height: 1px;
+    background: $color-fontLight;
+    content: ""; 
+  }
+
+  &__option:first-child .custom-select__option-text::before {
+    margin-right: 10px;
+  }
+
+  &__option:first-child .custom-select__option-text::after {
+    margin-left: 10px;
+  }
+
+}
