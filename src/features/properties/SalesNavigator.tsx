@@ -27,11 +27,16 @@ const SalesNavigator = () => {
     status: "all",
     priceOrder: "asc",
     onlyBalcony: false,
+    onlyKitchen: false,
+    onlyTerrace: false,
+    onlyWardrobe: false,
+    onlyParking: false,
     rooms: "all",
     area: "all",
   });
 
   const [filters, setFilters] = useState(draft);
+  const [showMoreFilters, setShowMoreFilters] = useState(false);
   
   if (!properties) return <p>Ładowanie...</p>;
 
@@ -67,21 +72,10 @@ const SalesNavigator = () => {
       </div>
 
       <div className="sales-navigator__content hero-inner page-width">
-        {/* <label>
-          <input
-            type="checkbox"
-            checked={draft.onlyBalcony}
-            onChange={() =>
-              setDraft((prev) => ({
-                ...prev,
-                onlyBalcony: !prev.onlyBalcony,
-              }))
-            }
-          />
-          Tylko z balkonem
-        </label> */}
-
-        <div className="searcher grid grid--1-col grid--2-col-tablet-down grid--3-col-desktop row">
+        <div className="searcher
+        grid grid--1-col grid--2-col-tablet-down grid--3-col-desktop
+        "
+        >
           <div className="grid__item">
             <CustomSelect
               value={draft.status}
@@ -142,15 +136,100 @@ const SalesNavigator = () => {
           </div>
         </div>
 
-        <button
-          className="search-button"
-          onClick={() => {
-            setFilters(draft);
-            listRef.current?.scrollIntoView({ behavior: "smooth" });
-          }}
-        >
-          Szukaj
-        </button>
+        {showMoreFilters && (
+          <div className="filters__more grid grid--2-col grid--3-col-tablet-down grid--4-col-desktop">
+            <label className="filters__checkbox grid__item h5-input">
+              <input
+                type="checkbox"
+                className="filters__input"
+                checked={draft.onlyBalcony}
+                onChange={() =>
+                  setDraft((prev) => ({
+                    ...prev,
+                    onlyBalcony: !prev.onlyBalcony,
+                  }))
+                }
+              />
+              Tylko z balkonem
+            </label>
+            <label className="filters__checkbox grid__item h5-input">
+              <input
+                type="checkbox"
+                className="filters__input"
+                checked={draft.onlyKitchen}
+                onChange={() =>
+                  setDraft((prev) => ({
+                    ...prev,
+                    onlyKitchen: !prev.onlyKitchen,
+                  }))
+                }
+              />
+              Osobna kuchnia
+            </label>
+            <label className="filters__checkbox grid__item h5-input">
+              <input
+                type="checkbox"
+                className="filters__input"
+                checked={draft.onlyTerrace}
+                onChange={() =>
+                  setDraft((prev) => ({
+                    ...prev,
+                    onlyTerrace: !prev.onlyTerrace,
+                  }))
+                }
+              />
+              Mieszkanie z tarasem
+            </label>
+            <label className="filters__checkbox grid__item h5-input">
+              <input
+                type="checkbox"
+                className="filters__input"
+                checked={draft.onlyWardrobe}
+                onChange={() =>
+                  setDraft((prev) => ({
+                    ...prev,
+                    onlyWardrobe: !prev.onlyWardrobe,
+                  }))
+                }
+              />
+              Garderoba
+            </label>
+            <label className="filters__checkbox grid__item h5-input">
+              <input
+                type="checkbox"
+                className="filters__input"
+                checked={draft.onlyParking}
+                onChange={() =>
+                  setDraft((prev) => ({
+                    ...prev,
+                    onlyParking: !prev.onlyParking,
+                  }))
+                }
+              />
+              Dodatkowy parking
+            </label>
+          </div>
+        )}
+
+        <div className="sales-navigator__actions">
+          <button
+            className="more-filters-button btn h5-input"
+            onClick={() => setShowMoreFilters(prev => !prev)}
+          >
+            {showMoreFilters ? "Mniej filtrów" : "Więcej filtrów"}
+          </button>
+
+          <button
+            className="search-button btn h5-input"
+            onClick={() => {
+              setFilters(draft);
+              listRef.current?.scrollIntoView({ behavior: "smooth" });
+            }}
+          >
+            Szukaj
+          </button>
+        </div>
+        
 
         <div ref={listRef} className="list">
           {filtered.length === 0 ? (

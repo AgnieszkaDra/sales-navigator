@@ -6,6 +6,21 @@
     text-align: center;
     letter-spacing: 0.05em;
   }
+  &__actions {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+
+    margin-top: 1em;
+    margin-bottom: 1em;
+
+    gap: 1rem;
+
+    button {
+      width: auto;
+      flex: 0 0 auto;
+    }
+  }
 }
 
 .searcher {
@@ -58,23 +73,6 @@
     overflow: hidden;
     text-overflow: ellipsis;
     white-space: nowrap;
-    width: 50%;
-    &::before,
-    &::after {
-      display: block;
-      
-      content: "";
-      flex: 1;
-      height: 1px;
-      background: $color-fontLight;
-      content: "";
-    }
-    &::before {
-      margin-right: 10px;
-    }
-    &::after {
-      margin-left: 10px;
-    }
   }
 
   &__icon {
@@ -96,7 +94,6 @@
       border-top: 6px solid $color-orangeBrown;
       border-right: 6px solid transparent;
       margin-right: -12px;
-
       transition: transform 0.2s ease;
     }
   }
@@ -111,15 +108,11 @@
     left: 0;
     right: 0;
     color: $color-fontLight;
-    background: $color-choco;
+    background: $color-white;
     border: 1px solid $color-smokeWhite;
     border-radius: 4px;
-
-    z-index: 10;
-    max-height: 240px;
-    width: 115%;
-    overflow-y: auto;
-
+    z-index: 100;
+    width: 100%;
     box-shadow: 0 4px 12px rgba(0, 0, 0, 0.08);
   }
 
@@ -136,12 +129,12 @@
     }
 
     &.is-highlighted {
-      background: var(--color-foreground);
+      background: $color-orangeBrown;
     }
 
     &.is-selected {
       color: $color-white;
-      background: $color-fontLight;
+      background: $color-orangeBrown;
     }
   }
 
@@ -182,3 +175,14 @@
   }
 
 }
+
+.filters {
+  &__more {
+    margin-top: 1em;;
+  }
+  &__checkbox {
+    margin-top: 1em;
+    color: $color-fontLight;
+  }
+}
+

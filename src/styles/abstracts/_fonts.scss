@@ -70,7 +70,7 @@ $typography: (
   @include fluid-type-preset(h5-lead);
 
   display: block;
-  font-weight: map-get(sizes.$font-weight, large); // bold equivalent
+  font-weight: map-get(sizes.$font-weight, large); 
   line-height: normal;
   letter-spacing: normal;
 
@@ -80,6 +80,13 @@ $typography: (
   margin-inline-end: 0;
 
   unicode-bidi: isolate;
+}
+
+.h5-input {
+  @include fluid-type-preset(input);
+  display: block;
+  width: 100%;
+  margin: 0;
 }
 
 .paragraph {

@@ -112,8 +112,8 @@ export default function CustomSelect({
           open ? `${listboxId}-option-${highlightedIndex}` : undefined
       }
     >
-      <span className="custom-select__value">
-        {selected ? selected.label : "Wybierz opcję"}
+      <span className="custom-select__value h5-input">
+        {selected ? `— ${selected.label} —` : "Wybierz opcję"}
       </span>
 
       <span className="custom-select__icon" aria-hidden="true">
