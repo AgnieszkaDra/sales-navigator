@@ -2,38 +2,79 @@ import { useState } from "react";
 import { useProperties } from "../useProperties";
 import AddProperty from "./AdminProperty";
 import { auth } from "../firebase/config";
-import { signInWithEmailAndPassword, signOut } from "firebase/auth";
+import {
+  signInWithEmailAndPassword,
+  signOut,
+} from "firebase/auth";
 
-const Login = ({ onLogin }) => {
-  const [email, setEmail] = useState("");
-  const [password, setPassword] = useState("");
+type Property = {
+  id: string;
+  title?: string;
+  price?: number;
+  location?: string;
+};
+
+type LoginProps = {
+  onLogin: (value: boolean) => void;
+};
+
+const Login = ({ onLogin }: LoginProps) => {
+  const [email, setEmail] = useState<string>("");
+  const [password, setPassword] = useState<string>("");
 
   const handleLogin = async () => {
-    await signInWithEmailAndPassword(auth, email, password);
+    await signInWithEmailAndPassword(
+      auth,
+      email,
+      password
+    );
+
     onLogin(true);
   };
 
   return (
     <div>
       <h2>Admin login</h2>
+
       <input
         placeholder="email"
-        onChange={(e) => setEmail(e.target.value)}
+        value={email}
+        onChange={(e) =>
+          setEmail(e.target.value)
+        }
       />
+
       <input
         type="password"
         placeholder="hasło"
-        onChange={(e) => setPassword(e.target.value)}
+        value={password}
+        onChange={(e) =>
+          setPassword(e.target.value)
+        }
       />
-      <button onClick={handleLogin}>Zaloguj</button>
+
+      <button onClick={handleLogin}>
+        Zaloguj
+      </button>
     </div>
   );
 };
 
-const PropertyList = ({ properties }) => {
-  const handleDelete = async (id) => {
-    const { deleteDoc, doc } = await import("firebase/firestore");
-    const { db } = await import("../firebase/config");
+type PropertyListProps = {
+  properties: Property[];
+};
+
+const PropertyList = ({
+  properties,
+}: PropertyListProps) => {
+  const handleDelete = async (id: string) => {
+    const { deleteDoc, doc } = await import(
+      "firebase/firestore"
+    );
+
+    const { db } = await import(
+      "../firebase/config"
+    );
 
     await deleteDoc(doc(db, "properties", id));
   };
@@ -43,13 +84,21 @@ const PropertyList = ({ properties }) => {
       {properties.map((p) => (
         <div
           key={p.id}
-          style={{ border: "1px solid #ddd", margin: 10, padding: 10 }}
+          style={{
+            border: "1px solid #ddd",
+            margin: 10,
+            padding: 10,
+          }}
         >
           <h3>{p.title}</h3>
           <p>{p.price} zł</p>
           <p>{p.location}</p>
 
-          <button onClick={() => handleDelete(p.id)}>Usuń</button>
+          <button
+            onClick={() => handleDelete(p.id)}
+          >
+            Usuń
+          </button>
         </div>
       ))}
     </div>
@@ -58,19 +107,26 @@ const PropertyList = ({ properties }) => {
 
 const AdminPage = () => {
   const { properties } = useProperties();
-  const [isLogged, setIsLogged] = useState(false);
+  const [isLogged, setIsLogged] =
+    useState<boolean>(false);
 
-  if (!isLogged) return <Login onLogin={setIsLogged} />;
+  if (!isLogged) {
+    return <Login onLogin={setIsLogged} />;
+  }
 
   return (
     <div>
       <h1>Panel admina</h1>
 
-      <button onClick={() => signOut(auth)}>Wyloguj</button>
+      <button onClick={() => signOut(auth)}>
+        Wyloguj
+      </button>
 
       <AddProperty />
 
-      <PropertyList properties={properties} />
+      <PropertyList
+        properties={properties}
+      />
     </div>
   );
 };
