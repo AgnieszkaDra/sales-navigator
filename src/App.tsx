@@ -1,7 +1,7 @@
 import "./App.css";
 import { Routes, Route } from "react-router-dom";
 import { HomePage } from "./pages";
-import AdminPage from "./admin/AdminPage";
+import AdminPage from "./admin/AdminPage.tsx"
 import ApartmentPage from "./components/ApartmentPage/ApartmentPage";
 
 function App() {
