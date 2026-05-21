@@ -69,9 +69,6 @@ export async function navigate(path: string) {
   }
 }
 
-
-
-
 document.addEventListener("DOMContentLoaded", () => {
   navigate(window.location.pathname);
 });
