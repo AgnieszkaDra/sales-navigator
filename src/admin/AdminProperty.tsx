@@ -1,26 +1,48 @@
 import { useState } from "react";
-import { addDoc, collection } from "firebase/firestore";
+import {
+  addDoc,
+  collection,
+} from "firebase/firestore";
 import { db } from "../firebase/config";
 import { PropertySchema } from "../schemas/property";
 
-export default function AddProperty() {
-  const [form, setForm] = useState({
-    title: "",
-    location: "",
-    price: "",
-    status: "available",
-    floor: "",
-    area: "",
-    rooms: "",
-    features: {
-      balcony: false,
-      terrace: false,
-      wardrobe: false,
-      separateKitchen: false,
-    },
-  });
+type FormState = {
+  title: string;
+  location: string;
+  price: string;
+  status: string;
+  floor: string;
+  area: string;
+  rooms: string;
+  features: {
+    balcony: boolean;
+    terrace: boolean;
+    wardrobe: boolean;
+    separateKitchen: boolean;
+  };
+};
 
-  const handleSubmit = async (e) => {
+export default function AddProperty() {
+  const [form, setForm] =
+    useState<FormState>({
+      title: "",
+      location: "",
+      price: "",
+      status: "available",
+      floor: "",
+      area: "",
+      rooms: "",
+      features: {
+        balcony: false,
+        terrace: false,
+        wardrobe: false,
+        separateKitchen: false,
+      },
+    });
+
+  const handleSubmit = async (
+    e: React.FormEvent<HTMLFormElement>
+  ) => {
     e.preventDefault();
 
     const result = PropertySchema.safeParse({
@@ -38,18 +60,52 @@ export default function AddProperty() {
       return;
     }
 
-    await addDoc(collection(db, "properties"), result.data);
+    await addDoc(
+      collection(db, "properties"),
+      result.data
+    );
 
     alert("Dodano!");
   };
 
+  const handleChange = (
+    e: React.ChangeEvent<HTMLInputElement>
+  ) => {
+    const { name, value } = e.target;
+
+    setForm((prev) => ({
+      ...prev,
+      [name]: value,
+    }));
+  };
+
   return (
-    <form onSubmit={handleSubmit} style={{ marginBottom: 20 }}>
+    <form
+      onSubmit={handleSubmit}
+      style={{ marginBottom: 20 }}
+    >
       <h3>Dodaj nieruchomość</h3>
 
-      <input placeholder="Tytuł" onChange={(e) => setForm({ ...form, title: e.target.value })} />
-      <input placeholder="Lokalizacja" onChange={(e) => setForm({ ...form, location: e.target.value })} />
-      <input placeholder="Cena" onChange={(e) => setForm({ ...form, price: e.target.value })} />
+      <input
+        name="title"
+        placeholder="Tytuł"
+        value={form.title}
+        onChange={handleChange}
+      />
+
+      <input
+        name="location"
+        placeholder="Lokalizacja"
+        value={form.location}
+        onChange={handleChange}
+      />
+
+      <input
+        name="price"
+        placeholder="Cena"
+        value={form.price}
+        onChange={handleChange}
+      />
 
       <button type="submit">Dodaj</button>
     </form>
