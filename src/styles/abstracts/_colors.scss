@@ -10,7 +10,9 @@ $color-choco: rgb(227, 217, 196);
 $color-text: rgb(68, 68, 68);
 $color-fontLight: rgb(122, 122, 122);
 $color-orangeBrown: rgb(227, 132, 79);
-
+$color-statusSold: rgba(255, 72, 0, 0.885);
+$color-statusReserved: rgba(255, 234, 7, 0.885);
+$color-statusAvailable: rgba(11, 233, 11, 0.885);
 
 :root {
     --color-white: white;
@@ -22,5 +24,8 @@ $color-orangeBrown: rgb(227, 132, 79);
     --color-fontLight: rgb(122, 122, 122)
     --color-text: rgb(68, 68, 68);
     --color-orangeBrown: rgb(227, 132, 79);
+    --color-statusSold: rgba(255, 72, 0, 0.885);
+    --color-statusReserved: rgba(255, 234, 7, 0.885);
+    --color-statusAvailable: rgba(11, 233, 11, 0.885);
   }
 

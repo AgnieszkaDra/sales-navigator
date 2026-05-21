@@ -21,6 +21,47 @@
       flex: 0 0 auto;
     }
   }
+  &-results {
+    padding-top: 36px;
+    &__top {
+      position: relative;
+    }
+    &__item {
+      border: 2px solid $color-smokeWhite;
+      box-sizing: border-box;
+    }
+    &__status {
+      position: absolute;
+      top: 12px;
+      left: -10px;
+      z-index: 4;
+      min-width: 100px;
+      padding: 10px 20px;;
+      &--available {
+        background-color: $color-statusAvailable;
+      }
+      &--reserved {
+        background-color: $color-statusReserved;
+      }
+      &--sold {
+        background-color: $color-statusSold;
+      }
+    }
+    &__image-link {
+      display: block;
+      width: 80%;
+      height: 200px;
+    }
+    &__title {
+      font-family: var(--typography-primary-font-family);
+      line-height: 1.1;
+      letter-spacing: .15em;
+      font-weight: 500;
+      color: $color-fontLight;
+      font-size: 24px;
+    }
+  }
+
 }
 
 .searcher {

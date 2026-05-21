@@ -3,6 +3,8 @@
 
 :root {
   --font-heading-family: 'Cormorant Garamond', sans-serif;
+  --typography-primary-font-family: "Roboto Slab";
+  --global-typography-primary-font-weight: 600;
   --font-heading-style: normal;
   --font-heading-scale: 1;
   --font-body-scale: 1;
@@ -90,7 +92,7 @@ h1, .h1-font {
 }
 
 .elementor-container {
-  width: 300px;
+  max-width: 300px;
 
   @include respond(sm) {
     max-width: 420px;

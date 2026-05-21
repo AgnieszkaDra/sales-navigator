@@ -13,3 +13,5 @@ createRoot(document.getElementById('root')!).render(
     </BrowserRouter>
   </StrictMode>,
 )
+
+// https://mickiewicza21.pl/oferta/mieszkanie-l29/
