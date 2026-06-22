@@ -4,16 +4,12 @@
   &__title {
     text-transform: uppercase;
     text-align: center;
-    letter-spacing: 0.05em;
   }
   &__actions {
     display: flex;
     justify-content: space-between;
     align-items: center;
-
-    margin-top: 1em;
-    margin-bottom: 1em;
-
+    padding-top: 36px;
     gap: 1rem;
 
     button {
@@ -23,29 +19,50 @@
   }
   &-results {
     padding-top: 36px;
-    &__top {
-      position: relative;
+    &__title {
+      text-transform: uppercase;
+      margin: 0;
     }
     &__item {
-      border: 2px solid $color-smokeWhite;
+      position: relative;
+
       box-sizing: border-box;
+
+      padding: 10px;
+      padding-bottom: 50px;
+
+      border: 2px solid $color-smokeWhite;
+    }
+    &__card {
+      display: flex;
+      flex-direction: column;
+      height: 100%;
+      & > * {
+        margin-bottom: 2px;
+      }
     }
     &__status {
       position: absolute;
       top: 12px;
       left: -10px;
       z-index: 4;
+
       min-width: 100px;
-      padding: 10px 20px;;
-      &--available {
-        background-color: $color-statusAvailable;
-      }
-      &--reserved {
-        background-color: $color-statusReserved;
-      }
-      &--sold {
-        background-color: $color-statusSold;
-      }
+      padding: 10px 20px;
+
+      text-transform: uppercase;
+
+    &--available {
+      background-color: $color-statusAvailable;
+    }
+
+    &--reserved {
+      background-color: $color-statusReserved;
+    }
+
+    &--sold {
+      background-color: $color-statusSold;
+    }
     }
     &__image-link {
       display: block;
@@ -53,12 +70,37 @@
       height: 200px;
     }
     &__title {
-      font-family: var(--typography-primary-font-family);
-      line-height: 1.1;
-      letter-spacing: .15em;
-      font-weight: 500;
       color: $color-fontLight;
-      font-size: 24px;
+
+      font-family: var(--typography-primary-font-family);
+      letter-spacing: 0.15em;
+    }
+    &__price {
+      width: max-content;
+    }
+    &__table {
+      width: 100%;
+      height: min-content;
+      margin-bottom: 10px;
+      border-collapse: collapse;
+      border: 1px solid $color-smokeWhite;
+    }
+    &__table-heading,
+    &__table-cell {
+      padding: 0.75rem;
+      border: 1px solid $color-smokeWhite;
+    }
+
+    &__table-row--header {
+      background-color: $color-smokeWhite;
+    }
+    &__actions {
+      position: absolute;
+      right: -10px;
+      bottom: -12px;
+
+      width: max-content;
+      margin-top: auto;
     }
   }
 
@@ -70,16 +112,22 @@
 
 .custom-select {
   position: relative;
+
   width: 100%;
 
+  font-family: var(--font-third-family);
+
   &__trigger {
-    width: 100%;
     display: grid;
     grid-template-columns: 90% 10%;
 
-    padding: 12px;
-    border: 1px solid $color-smokeWhite;
+    width: 100%;
+    padding: 10px 12px 15px;
+
+    font-family: var(--font-third-family);
+
     background: $color-white;
+    border: 1px solid $color-smokeWhite;
     cursor: pointer;
 
     transition: border-color 0.2s ease, box-shadow 0.2s ease;
@@ -87,20 +135,21 @@
     & > * {
       display: flex;
       align-items: center;
+
       cursor: default;
       pointer-events: none;
+
       text-align: center;
       white-space: nowrap;
     }
-    
+
     &:hover {
-      border-color: $color-darkGrey;
+      box-shadow: 0 10px 15px -10px var(--color-veryLightBlue);
     }
 
     &:focus {
-      outline: none;
       border-color: $color-orangeBrown;
-      box-shadow: 0 0 0 2px rgba(0, 0, 0, 0.05);
+      outline: none;
     }
 
     &.is-open {
@@ -109,32 +158,41 @@
   }
 
   &__value {
-    color: $color-fontLight;
-    text-align: start;
     overflow: hidden;
+
+    color: $color-fontLight;
+
+    text-align: start;
     text-overflow: ellipsis;
     white-space: nowrap;
   }
 
   &__icon {
     grid-column: 2 / 3;
+
     height: calc(100% + 24px);
     margin-top: -12px;
-    @include flexAbsoluteCenter;
+
     border-left: 1px solid $color-smokeWhite;
 
+    @include flexAbsoluteCenter;
+
     &::after {
-      content: "";
       position: absolute;
-      content: "";
       top: 50%;
-      margin-top: -3px;
+
       width: 0;
       height: 0;
-      border-left: 6px solid transparent;
+
+      margin-top: -3px;
+      margin-right: -12px;
+
+      content: "";
+
       border-top: 6px solid $color-orangeBrown;
       border-right: 6px solid transparent;
-      margin-right: -12px;
+      border-left: 6px solid transparent;
+
       transition: transform 0.2s ease;
     }
   }
@@ -146,22 +204,27 @@
   &__menu {
     position: absolute;
     top: calc(100% + 4px);
-    left: 0;
     right: 0;
+    left: 0;
+    z-index: 100;
+
+    width: 100%;
+
     color: $color-fontLight;
+
     background: $color-white;
     border: 1px solid $color-smokeWhite;
     border-radius: 4px;
-    z-index: 100;
-    width: 100%;
     box-shadow: 0 4px 12px rgba(0, 0, 0, 0.08);
   }
 
   &__option {
-    padding: 10px 12px;
-    cursor: pointer;
     display: flex;
     align-items: center;
+
+    padding: 10px 12px;
+
+    cursor: pointer;
 
     transition: background 0.15s ease;
 
@@ -180,31 +243,33 @@
   }
 
   &__option:first-child.is-selected .custom-select__option-text::before,
-  &__option:first-child.is-selected .custom-select__option-text::after{
+  &__option:first-child.is-selected .custom-select__option-text::after {
     background-color: $color-white;
   }
 
-  &__option:first-child .custom-select__option-text{
+  &__option:first-child .custom-select__option-text {
     display: flex;
     align-items: center;
+
+    flex: 0 1 40%;
+
+    font-size: 0.85rem;
+    text-align: center;
+    white-space: nowrap;
+
     cursor: default;
     pointer-events: none;
   }
 
-  &__option:first-child .custom-select__option-text {
-    flex: 0 1 40%;
-    text-align: center;
-    font-size: 0.85rem;
-    white-space: nowrap;
-}
-
   &__option:first-child .custom-select__option-text::before,
   &__option:first-child .custom-select__option-text::after {
-    content: "";
     flex: 1;
+
     height: 1px;
+
+    content: "";
+
     background: $color-fontLight;
-    content: ""; 
   }
 
   &__option:first-child .custom-select__option-text::before {
@@ -214,15 +279,13 @@
   &__option:first-child .custom-select__option-text::after {
     margin-left: 10px;
   }
-
 }
 
 .filters {
   &__more {
-    margin-top: 1em;;
+    padding-top: 36px;
   }
   &__checkbox {
-    margin-top: 1em;
     color: $color-fontLight;
   }
 }

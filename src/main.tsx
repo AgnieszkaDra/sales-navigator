@@ -15,3 +15,4 @@ createRoot(document.getElementById('root')!).render(
 )
 
 // https://mickiewicza21.pl/oferta/mieszkanie-l29/
+// Zgodnie z konwencją positioning → layout → sizing → spacing → typography → visuals → effects/transitions,

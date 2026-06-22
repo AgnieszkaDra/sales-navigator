@@ -11,14 +11,13 @@
 }
 
 $typography: (
-  // h1-header: (min: 2.75rem, vw: 5vw, max: 4.5rem),
-  h1-header: (min: 2rem, vw: 5vw, max: 2.75rem),
-  h1-subpage: (min: 1.7rem, vw: 3vw, max: 2.125rem),
-  h2-header: (min: 2.25rem, vw: 4vw, max: 3.625rem),
-  h2-title: (min: 1.625rem, vw: 2.7vw, max: 2.375rem),
-  h3-title: (min: 1.7rem, vw: 3vw, max: 2.125rem),
-  h4-title: (min: 1.375rem, vw: 2.25vw, max: 1.75rem),
-  h5-lead: (min: 0.9rem, vw: 1.4vw, max: 1.05rem),
+  h1-header:  (min: 2rem,   vw: 5vw,   max: 2.75rem), 
+  h1-subpage: (min: 1.7rem, vw: 3vw,   max: 2.125rem), 
+  h2-header:  (min: 1rem,   vw: 2.6vw,   max: 1.75rem),    
+  h2-title:   (min: 1.625rem, vw: 2.7vw, max: 2.375rem), 
+  h3-title: (min: 1.25rem,  vw: 2vw,   max: 1.5rem),  
+  h4-title: (min: 1.125rem, vw: 1.6vw, max: 1.25rem), 
+  h5-lead:  (min: 0.9rem,   vw: 1.2vw, max: 1rem),     
   paragraph: (min: 1rem, vw: 1.5vw, max: 1.125rem), 
   input: (min: 0.875rem, vw: 0.875rem, max: 0.875rem),
 );
@@ -40,9 +39,8 @@ $typography: (
 
 .h2-header {
   @include fluid-type-preset(h2-header);
-  font-weight: map-get(sizes.$font-weight, large);
+  font-weight: map-get(sizes.$font-weight, medium);
   line-height: 70px;
-  letter-spacing: -1px;
 }
 
 .h2-title {
@@ -68,18 +66,10 @@ $typography: (
 
 .h5-lead {
   @include fluid-type-preset(h5-lead);
-
   display: block;
-  font-weight: map-get(sizes.$font-weight, large); 
+  font-weight: map-get(sizes.$font-weight, medium); 
   line-height: normal;
   letter-spacing: normal;
-
-  margin-block-start: 1.67em;
-  margin-block-end: 1.67em;
-  margin-inline-start: 0;
-  margin-inline-end: 0;
-
-  unicode-bidi: isolate;
 }
 
 .h5-input {
