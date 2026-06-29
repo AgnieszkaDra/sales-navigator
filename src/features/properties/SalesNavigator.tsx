@@ -69,7 +69,7 @@ const SalesNavigator = () => {
 
   const [filters, setFilters] =
     useState<DraftFilters>(draft);
-
+  
   const [showMoreFilters, setShowMoreFilters] =
     useState(false);
 
@@ -77,33 +77,95 @@ const SalesNavigator = () => {
     return <p>Ładowanie...</p>;
   }
 
+  // const filtered = (() => {
+  //   let result = properties;
+
+  //   if (filters.onlyBalcony) {
+  //     result = result.filter(
+  //       (p) => p.features?.balcony
+  //     );
+  //   }
+
+  //   if (filters.status !== "all") {
+  //     result = result.filter(
+  //       (p) => p.status === filters.status
+  //     );
+  //   }
+
+  //   result = [...result].sort((a, b) => {
+  //     if (!a.price) return 1;
+  //     if (!b.price) return -1;
+
+  //     return filters.priceOrder === "asc"
+  //       ? a.price - b.price
+  //       : b.price - a.price;
+  //   });
+
+  //   return result;
+  // })();
+
   const filtered = (() => {
-    let result = properties;
+  let result = [...properties];
 
-    if (filters.onlyBalcony) {
-      result = result.filter(
-        (p) => p.features?.balcony
-      );
-    }
+  // Status
+  if (filters.status !== "all") {
+    result = result.filter(
+      (p) => p.status === filters.status
+    );
+  }
 
-    if (filters.status !== "all") {
-      result = result.filter(
-        (p) => p.status === filters.status
-      );
-    }
+  // Balkon
+  if (filters.onlyBalcony) {
+    result = result.filter(
+      (p) => p.features?.balcony
+    );
+  }
 
-    result = [...result].sort((a, b) => {
-      if (!a.price) return 1;
-      if (!b.price) return -1;
+  // Liczba pokoi
+  if (filters.rooms !== "all") {
+    result = result.filter((p) => {
+      if (filters.rooms === "4+") {
+        return p.rooms >= 4;
+      }
 
-      return filters.priceOrder === "asc"
-        ? a.price - b.price
-        : b.price - a.price;
+      return p.rooms === Number(filters.rooms);
     });
+  }
 
-    return result;
-  })();
+  // Powierzchnia
+  if (filters.area !== "all") {
+    result = result.filter((p) => {
+      const area = p.area;
 
+      switch (filters.area) {
+        case "0-30":
+          return area <= 30;
+        case "30-50":
+          return area > 30 && area <= 50;
+        case "50-70":
+          return area > 50 && area <= 70;
+        case "70-100":
+          return area > 70 && area <= 100;
+        case "100+":
+          return area > 100;
+        default:
+          return true;
+      }
+    });
+  }
+
+  // Sortowanie
+  result.sort((a, b) => {
+    if (!a.price) return 1;
+    if (!b.price) return -1;
+
+    return filters.priceOrder === "asc"
+      ? a.price - b.price
+      : b.price - a.price;
+  });
+
+  return result;
+})();
   return (
     <section
       className="sales-navigator section"
@@ -323,7 +385,7 @@ const SalesNavigator = () => {
           <button
             className="more-filters-button btn h5-input"
             onClick={() =>
-              setShowMoreFilters(
+               setShowMoreFilters(
                 (prev) => !prev
               )
             }
@@ -337,7 +399,6 @@ const SalesNavigator = () => {
             className="search-button btn h5-input"
             onClick={() => {
               setFilters(draft);
-
               listRef.current?.scrollIntoView({
                 behavior: "smooth",
               });
