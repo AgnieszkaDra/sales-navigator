@@ -4,7 +4,7 @@ export const PropertySchema = z.object({
   id: z.string(),
 
   title: z.string().min(1),
-  location: z.string().min(1),
+  location: z.string().min(1).optional(),
 
   price: z.number(),
 

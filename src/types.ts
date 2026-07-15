@@ -55,7 +55,7 @@ export const PropertySchema = z.object({
   id: z.string(),
 
   title: z.string(),
-  location: z.string(),
+  location: z.string().default("Brak lokalizacji"),
 
   price: numberFromString,
 
@@ -70,7 +70,7 @@ export const PropertySchema = z.object({
     terrace: booleanFromPolish,
     wardrobe: booleanFromPolish,
     separateKitchen: booleanFromPolish,
-  }),
+  }).optional(),
 });
 
 export type Property = z.infer<typeof PropertySchema>;

@@ -1,3 +1,4 @@
+import { Link } from "react-router-dom";
 import { STATUS_LABELS } from "../../types";
 import type { Status } from "./CustomSelect";
 
@@ -152,15 +153,13 @@ const SalesNavigatorResults = ({
                   </table>
 
                   <div className="sales-navigator-results__actions">
-                  <a
-                    href={`/oferta/${slug}`}
-                    target="_blank"
-                    rel="noopener noreferrer"
-                    className="sales-navigator-results__button btn"
-                    aria-label={`Zobacz szczegóły mieszkania ${item.title} w nowej karcie`}
-                  >
-                    Zobacz mieszkanie
-                  </a>
+                    <Link
+                      to={`/oferta/${item.id}`}
+                      target="_blank"
+                      className="sales-navigator-results__button btn"
+                    >
+                      Zobacz mieszkanie
+                    </Link>
                   </div>
                 </div>
             </div>

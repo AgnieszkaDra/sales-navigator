@@ -135,11 +135,8 @@ h1, .h1-font {
 }
 
 .grid {
-  display: flex;
-  flex-wrap: wrap;
-  padding: 0;
+  display: grid;
   list-style: none;
-
   column-gap: var(--grid-mobile-horizontal-spacing);
   row-gap: var(--grid-mobile-vertical-spacing);
 
@@ -150,72 +147,37 @@ h1, .h1-font {
   }
 }
 
-/* =========================
-   MOBILE / DEFAULT
-   ========================= */
-
-/* opcjonalne */
-@include respond(md-down) {
-  .grid {
-    column-gap: var(--grid-mobile-horizontal-spacing);
-    row-gap: var(--grid-mobile-vertical-spacing);
-  }
-
-.grid--1-col .grid__item {
-  width: 100%;
-  max-width: 100%;
+.grid--gapless.grid {
+  column-gap: 0;
+  row-gap: 0;
 }
 
-.grid--2-col .grid__item {
-  width: calc(50% - var(--grid-mobile-horizontal-spacing) / 2);
-  max-width: calc(50% - var(--grid-mobile-horizontal-spacing) / 2);
+.grid--1-col {
+  grid-template-columns: 1fr;
 }
-}
-
-/* =========================
-   TABLET DOWN
-   ========================= */
 
 @include respond(md) {
-  .grid--2-col-tablet-down .grid__item {
-    width: calc(50% - var(--grid-mobile-horizontal-spacing) / 2);
-    max-width: calc(50% - var(--grid-mobile-horizontal-spacing) / 2);
+  .grid--2-col-tablet-down {
+    grid-template-columns: repeat(2, 1fr);
   }
 
-  .grid--3-col-tablet-down .grid__item {
-    width: calc(33.333% - var(--grid-mobile-horizontal-spacing) * 2 / 3);
-    max-width: calc(33.333% - var(--grid-mobile-horizontal-spacing) * 2 / 3);
+  .grid--3-col-tablet-down {
+    grid-template-columns: repeat(3, 1fr);
   }
 }
-
-/* =========================
-   DESKTOP
-   ========================= */
 
 @include respond(lg) {
   .grid {
     column-gap: var(--grid-desktop-horizontal-spacing);
     row-gap: var(--grid-desktop-vertical-spacing);
   }
-
-  .grid--3-col-desktop .grid__item {
-    width: calc(33.333% - var(--grid-desktop-horizontal-spacing) * 2 / 3);
-    max-width: calc(33.333% - var(--grid-desktop-horizontal-spacing) * 2 / 3);
+  .grid--3-col-desktop {
+    grid-template-columns: repeat(3, 1fr);
   }
 
-  .grid--4-col-desktop .grid__item {
-    width: calc(25% - var(--grid-desktop-horizontal-spacing) * 3 / 4);
-    max-width: calc(25% - var(--grid-desktop-horizontal-spacing) * 3 / 4);
+  .grid--4-col-desktop {
+    grid-template-columns: repeat(4, 1fr);
   }
-}
-
-/* =========================
-   GAPLESS
-   ========================= */
-
-.grid--gapless.grid {
-  column-gap: 0;
-  row-gap: 0;
 }
 
 .margin-div {

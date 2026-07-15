@@ -411,8 +411,6 @@ const SalesNavigator = () => {
         <SalesNavigatorResults
           results={filtered}
         />
-
-        
       </div>
     </section>
   );
