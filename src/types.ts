@@ -61,11 +61,11 @@ export const PropertySchema = z.object({
 
   status: statusEnum,
 
-  floor: numberFromString,
   area: numberFromString,
   rooms: numberFromString,
 
   features: z.object({
+    floor: z.string().optional(),
     balcony: booleanFromPolish,
     terrace: booleanFromPolish,
     wardrobe: booleanFromPolish,

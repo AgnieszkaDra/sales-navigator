@@ -10,14 +10,14 @@ export const PropertySchema = z.object({
 
   status: z.enum(["available", "reserved", "sold"]),
 
-  floor: z.number(),
   area: z.number(),
   rooms: z.number(),
 
   features: z.object({
-    balcony: z.boolean(),
-    terrace: z.boolean(),
-    wardrobe: z.boolean(),
-    separateKitchen: z.boolean(),
+    floor: z.string().optional(),
+    balcony: z.boolean().optional(),
+    terrace: z.boolean().optional(),
+    wardrobe: z.boolean().optional(),
+    separateKitchen: z.boolean().optional(),
   }),
 });

@@ -1,9 +1,9 @@
 @use './abstracts/index' as *;
 
 .sales-navigator {
+  text-align: center;
   &__title {
     text-transform: uppercase;
-    text-align: center;
   }
   &__actions {
     display: flex;
