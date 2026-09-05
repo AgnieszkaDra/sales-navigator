@@ -109,10 +109,10 @@ const ApartmentPage = () => {
             border-smokeWhite
             ">
             <div 
-            className="
-              apartment__specification-label
-              inline-block
-              "
+              className="
+                apartment__specification-label
+                inline-block
+                "
             >
               <p
                 className="
@@ -163,7 +163,28 @@ const ApartmentPage = () => {
             Karta lokalu
           </div>
           <div className="grid__item border-2 border-all-solid border-smokeWhite uppercase font-bold text-light">
-            Powierzchnie pomieszczeń
+            <div 
+              className="
+                apartment__specification-label
+                inline-block
+                "
+            >
+              <p
+                  className="
+                  apartment__specification-label-text
+                  border-2 
+                  border-bottom-solid 
+                  border-orangeBrown
+                  text-light
+                  ">
+                    Powierzchnie pomieszczeń
+              </p>
+              <div>
+                
+              </div>
+            </div>
+            
+            
           </div>
         </div>
       </div>
