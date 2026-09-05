@@ -1,26 +1,4 @@
-// import type { MenuData, MenuItem } from '../types/navbar'
-
-// const items: Record<number, MenuItem> = {
-//   1: { id: 1, label: 'Znajdź mieszkanie', path: 'Znajdź mieszkanie', className: 'menu__item--find' },
-//   2: { id: 2, label: 'Home', path: 'Home' },
-//   3: { id: 3, label: 'Galeria', path: 'Galeria' },
-// }
-
-// const root: MenuItem = {
-//   id: 0,
-//   name: '(Root)',
-//   label: 'Menu',
-//   childIds: Object.keys(items).map(Number),
-// }
-
-// export const menu: MenuData = {
-//   menu: { ...items }, 
-//   menuItem: root,
-// }
-
-// export default menu
-
-// import type { MenuData, MenuLink, MenuRoot } from "../types/navbar";
+import type { MenuData, MenuLink, MenuRoot } from "../types/navbar";
 
 const items: Record<number, MenuLink> = {
   1: {
@@ -73,25 +51,6 @@ const itemsMobile: Record<number, MenuLink> = {
   },
 };
 
-// const menuItems = items || itemsMobile;
-
-// const root: MenuRoot = {
-//   id: 0,
-//   name: "(Root)",
-//   label: "Menu",
-//   childIds: Object.keys(menuItems).map(Number),
-// };
-
-// export const menu: MenuData = {
-//   menu: menuItems,
-//   menuItem: root,
-// };
-
-// export default menu;
-
-
-import type { MenuData, MenuLink, MenuRoot } from "../types/navbar";
-
 const createMenu = (
   menuItems: Record<number, MenuLink>
 ): MenuData => {
@@ -110,3 +69,5 @@ const createMenu = (
 
 export const menu = createMenu(items);
 export const menuMobile = createMenu(itemsMobile);
+
+export default menu;

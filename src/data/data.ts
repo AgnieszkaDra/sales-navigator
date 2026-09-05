@@ -1,12 +1,12 @@
-import menu from './menu'
-import type { MenuData } from '../types/navbar'
+import menu from "./menu";
+import type { MenuData } from "../types/navbar";
 
 export interface Data {
-  menu: MenuData
+  menu: MenuData;
 }
 
 export const data: Data = {
   menu,
-}
+};
 
-export default data
+export default data;
