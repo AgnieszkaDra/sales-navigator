@@ -37,18 +37,22 @@ const Header = () => {
 
       {/* NAV */}
       <motion.nav
-        className={`${navbarOpen ? 'nav open' : 'nav uppercase'}`}
-        initial={{ opacity: 0 }}
-        animate={{ opacity: 1 }}
-        transition={{ delay: 0.4, duration: 0.6 }}
-      >
-        {/* <Menu center={<Logo />} /> */}
-        <Menu
-          slots={{
-          center: <Logo />,
-          }}
-        />
-      </motion.nav>
+  className="nav"
+  initial={false}
+  animate={{
+    y: navbarOpen ? 0 : '-100%',
+  }}
+  transition={{
+    duration: 1.2,
+    ease: [0.76, 0, 0.24, 1],
+  }}
+>
+  <Menu
+    slots={{
+      center: <Logo />,
+    }}
+  />
+</motion.nav>
     </motion.header>
   );
 };

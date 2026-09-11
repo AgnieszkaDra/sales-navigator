@@ -72,7 +72,7 @@ const Menu = ({ slots }: MenuProps): JSX.Element => {
       ))}
 
       {slots?.center && (
-        <li className="menu__slot menu__slot--center">
+        <li className="menu__slot menu__item menu__slot--center">
           {slots.center}
         </li>
       )}

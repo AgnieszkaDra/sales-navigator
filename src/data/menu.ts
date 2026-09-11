@@ -35,7 +35,7 @@ const itemsMobile: Record<number, MenuLink> = {
     id: 2,
     label: "Mieszkania",
     path: "Mieszkania",
-    className: "border-1 border-all-solid border-orangeBrown menu__item--find",
+    className: "menu__item--find",
   },
   
   3: {
