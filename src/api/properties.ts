@@ -9,8 +9,8 @@ export const getProperties = async (): Promise<Property[]> => {
     const data = document.data();
 
     const parsed = PropertySchema.safeParse({
-      id: document.id,
       ...data,
+      id: document.id,
     });
 
     if (!parsed.success) {

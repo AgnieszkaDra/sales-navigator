@@ -32,6 +32,7 @@ const SalesNavigatorResults = ({
   emptyMessage = "Brak wyników",
 }: Props) => {
   if (loading) {
+   
     return (
       <div
         className="sales-navigator-results sales-navigator-results--loading"
@@ -52,7 +53,8 @@ const SalesNavigatorResults = ({
         {emptyMessage}
       </div>
     );
-  }
+  } 
+  console.log("RESULT:", results);
 
   return (
     <div className="sales-navigator-results">

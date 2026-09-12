@@ -9,6 +9,7 @@ export const useProperties = () => {
   useEffect(() => {
     const fetchData = async () => {
       const data = await getProperties();
+
       setProperties(data as Property[]);
       setLoading(false);
     };

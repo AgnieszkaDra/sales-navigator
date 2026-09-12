@@ -1,29 +1,3 @@
-// export const STATUS_LABELS = {
-//   available: "Dostępny",
-//   reserved: "Zarezerwowany",
-//   sold: "Sprzedany",
-// } as const;
-
-// export type Property = {
-//   id: string;
-
-//   title: string;
-//   location: string;
-//   price: number;
-
-//   status: keyof typeof STATUS_LABELS;
-//   floor: number;
-//   area: number;
-//   rooms: number;
-
-//   features: {
-//     balcony: boolean;
-//     terrace: boolean;
-//     wardrobe: boolean;
-//     separateKitchen: boolean;
-//   };
-// };
-
 import { z } from "zod";
 
 export const STATUS_LABELS = {

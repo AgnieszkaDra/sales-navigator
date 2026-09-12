@@ -74,7 +74,7 @@ const SalesNavigator = () => {
     useState(false);
 
   if (!properties) {
-    return <p>Ładowanie...</p>;
+    //return <p>Ładowanie...</p>;
   }
 
   // const filtered = (() => {
@@ -106,6 +106,7 @@ const SalesNavigator = () => {
 
   const filtered = (() => {
   let result = [...properties];
+  console.log(properties);
 
   // Status
   if (filters.status !== "all") {
