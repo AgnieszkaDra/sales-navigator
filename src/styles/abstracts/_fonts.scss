@@ -88,3 +88,12 @@ $typography: (
 .input-text {
   @include fluid-type-preset(input);
 }
+
+.fw-medium {
+  font-weight: map-get(sizes.$font-weight, medium);
+}
+
+.fw-bold {
+  font-weight: map-get(sizes.$font-weight, large);
+}
+

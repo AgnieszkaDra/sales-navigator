@@ -1,33 +1,54 @@
+
 import { useEffect, useState } from "react";
 import { useParams } from "react-router-dom";
 import { getProperty } from "../../api/properties";
 import type { Property } from "../../types";
 import "../../styles/apartment.scss";
+import { apartmentSpecifications } from "../../data/apartmentspecificatons";
+import Pagination from "../../ui/Pagination";
+import { getFloorPlan } from "../../utils/getFloorPlan";
 
 const ApartmentPage = () => {
   const { id } = useParams();
+
   const [property, setProperty] = useState<Property | null>(null);
-  const formattedPrice = property?.price
-  .toFixed(2)
-  .replace(".", ",")
-  .replace(/\B(?=(\d{3})+(?!\d))/g, ".");
+  const [floorPlanUrl, setFloorPlanUrl] = useState<string | null>(null);
 
   useEffect(() => {
     if (!id) return;
 
-    getProperty(id).then(setProperty);
+    getProperty(id)
+      .then((propertyData) => {
+        setProperty(propertyData);
+      })
+      .catch((error) => {
+        console.error("Nie udało się pobrać mieszkania:", error);
+        setProperty(null);
+      });
   }, [id]);
+
+  useEffect(() => {
+    if (!property?.floorPlan) {
+      // eslint-disable-next-line react-hooks/set-state-in-effect
+      setFloorPlanUrl(null);
+      return;
+    }
+
+    getFloorPlan(property.floorPlan)
+      .then(setFloorPlanUrl)
+      .catch((error) => {
+        console.error("Nie udało się pobrać rzutu:", error);
+        setFloorPlanUrl(null);
+      });
+  }, [property?.floorPlan]);
 
   if (!property) {
     return <p>Ładowanie...</p>;
   }
 
   return (
-    <section 
-      className="apartment page-width">
-      <div 
-        className="inline-block enter"
-      >
+    <section className="apartment page-width">
+      <div className="flex-center">
         <h1
           id="apartment-title"
           className="h1-header apartment__title border-2 border-bottom-solid border-orangeBrown"
@@ -35,157 +56,38 @@ const ApartmentPage = () => {
           {property.title}
         </h1>
       </div>
-      <div className="apartment__content hero-inner page-width">
-        <div
-          role="group"
-          aria-label="Parametry mieszkania"
-          className="
-            apartment__specifications
-            grid
-            grid--1-col
-            grid--2-col-tablet-down
-            grid--3-col-desktop
-            "
-          aria-labelledby="apartment-title"
-        >
-          <div className="
-            grid__item 
-            apartment__specification 
-            border-2 
-            border-all-solid 
-            border-smokeWhite
-            "
-          >
-            <div 
-              className="
-              apartment__specification-label
-              inline-block
-              "
+
+      <div className="apartment__content hero-inner page-width" />
+
+     <div className="apartment__layout grid grid--5-col-desktop">
+        <div className="apartment__specification grid grid--1-col grid__item span-2">
+          {apartmentSpecifications.map(({ key, label, getValue }) => (
+            <div
+              key={key}
+              className="apartment__specification-container grid__item"
             >
-              <p 
-                className="
-                apartment__specification-label-text
-                border-2 
-                border-bottom-solid 
-                border-orangeBrown
-                text-light
-                "
-              >
-                POWIERZCHNIA / CENA
-              </p>
-            </div>
-            <div className="
-              grid 
-              grid--1-col 
-              grid--2-col-tablet-down
-              ">
-              <div className="
-                border-2 
-                border-all-solid 
-                border-smokeWhite 
-                inline-block
-                padding-1
-                "
-              >
-                { property.area }
-              </div>
-              <div className="
-                border-2 
-                border-all-solid 
-                border-smokeWhite 
-                inline-block 
-                padding-1
-                "
-                >
-                { formattedPrice }zł
+              <div className="apartment__specification grid grid--2-1 border-2 border-bottom-solid border-smokeWhite">
+                <p className="apartment__specification-label-text fw-medium">
+                  {label}
+                </p>
+
+                <div className="apartment__specification-value fw-medium">
+                  {getValue(property)}
+                </div>
               </div>
             </div>
-          </div>
-          <div className="
-            grid__item 
-            apartment__specification
-            border-2 
-            border-all-solid 
-            border-smokeWhite
-            ">
-            <div 
-              className="
-                apartment__specification-label
-                inline-block
-                "
-            >
-              <p
-                className="
-                apartment__specification-label-text
-                border-2 
-                border-bottom-solid 
-                border-orangeBrown
-                text-light
-                ">
-                  Piętro
-              </p>
-            </div>
-            <div>
-              <div className="border-2 border-all-solid border-smokeWhite inline padding-1">{property.features?.floor}</div>
-            </div>
-          </div>
-          <div className="grid__item apartment__specification border-2 border-all-solid border-smokeWhite">
-            <div 
-              className="
-              apartment__specification-label
-              inline-block
-              "
-            >
-              <p
-                className="
-                apartment__specification-label-text
-                border-2 
-                border-bottom-solid 
-                border-orangeBrown
-                text-light
-                ">
-                  Liczba pokoi
-              </p>
-            </div>
-            <div>
-              <div className="border-2 border-all-solid border-smokeWhite inline padding-1">{property.rooms}</div>
-            </div>
-          </div>
+          ))}
         </div>
-      </div>
-      <div className="grid grid--1-col grid--3-col-desktop">
-        <div className="grid__item border-2 border-all-solid border-smokeWhite span-2">Pierwsza kolumna </div>
-        <div className="grid__item span-1 grid grid--1-col">
-          <div className="grid__item border-2 border-all-solid border-smokeWhite">
-            Spacer wirtualny
-          </div>
-          <div className="grid__item border-2 border-all-solid border-smokeWhite uppercase font-bold text-light">
-            Karta lokalu
-          </div>
-          <div className="grid__item border-2 border-all-solid border-smokeWhite uppercase font-bold text-light">
-            <div 
-              className="
-                apartment__specification-label
-                inline-block
-                "
-            >
-              <p
-                  className="
-                  apartment__specification-label-text
-                  border-2 
-                  border-bottom-solid 
-                  border-orangeBrown
-                  text-light
-                  ">
-                    Powierzchnie pomieszczeń
-              </p>
-              <div>
-                
-              </div>
-            </div>
-            
-            
-          </div>
+
+        <div className="grid__item span-3 border-2 border-all-solid border-smokeWhite">
+          <Pagination />
+
+          {floorPlanUrl && (
+            <img
+              src={floorPlanUrl}
+              alt={`Rzut mieszkania ${property.title}`}
+            />
+          )}
         </div>
       </div>
     </section>
@@ -193,3 +95,4 @@ const ApartmentPage = () => {
 };
 
 export default ApartmentPage;
+

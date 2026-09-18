@@ -38,6 +38,8 @@ export const PropertySchema = z.object({
   area: numberFromString,
   rooms: numberFromString,
 
+  floorPlan: z.string().optional(),
+
   features: z.object({
     floor: z.string().optional(),
     balcony: booleanFromPolish,

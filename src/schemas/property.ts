@@ -13,6 +13,8 @@ export const PropertySchema = z.object({
   area: z.number(),
   rooms: z.number(),
 
+  floorPlan: z.string().optional(),
+
   features: z.object({
     floor: z.string().optional(),
     balcony: z.boolean().optional(),
@@ -21,3 +23,5 @@ export const PropertySchema = z.object({
     separateKitchen: z.boolean().optional(),
   }),
 });
+
+export type Property = z.infer<typeof PropertySchema>;

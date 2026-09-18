@@ -28,7 +28,10 @@ export const getProperties = async (): Promise<Property[]> => {
 export const getProperty = async (
   id: string
 ): Promise<Property | null> => {
+  console.log("POBIERAM PROPERTY ID:", id);
   const snapshot = await getDoc(doc(db, "properties", id));
+
+  console.log("DOCUMENT EXISTS:", snapshot.exists())
 
   if (!snapshot.exists()) {
     return null;
@@ -36,13 +39,19 @@ export const getProperty = async (
 
   const data = snapshot.data();
 
+  console.log("RAW FIRESTORE DATA:", data);
+  console.log("RAW FLOOR PLAN:", data.floorPlan);
+
   const parsed = PropertySchema.safeParse({
     id: snapshot.id,
     ...data,
   });
 
+  console.log("PARSED PROPERTY:", parsed);
+
   if (!parsed.success) {
-    console.error("Invalid property:", parsed.error);
+     console.error("Invalid property:", parsed.error);
+  console.log("PARSED DATA:", parsed.data);
     return null;
   }
 

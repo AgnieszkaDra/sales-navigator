@@ -196,10 +196,17 @@ h1, .h1-font {
   .grid--4-col-desktop {
     grid-template-columns: repeat(4, 1fr);
   }
+  
+  .grid--5-col-desktop {
+    grid-template-columns: repeat(5, 1fr);
+  }
 }
-
 .span-2 {
   grid-column: span 2;
+}
+
+.span-3 {
+  grid-column: span 3;
 }
 
 .grid--2-1 {
@@ -284,6 +291,12 @@ h1, .h1-font {
   &--1 {
     flex: 1 1 0%;
   }
+}
+
+.flex-center {
+  display: flex;
+  justify-content: center;
+  align-items: center;
 }
 
 .align-center {
