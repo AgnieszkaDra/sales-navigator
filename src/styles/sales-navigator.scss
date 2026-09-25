@@ -9,7 +9,6 @@
     display: flex;
     justify-content: space-between;
     align-items: center;
-    padding-top: 36px;
     gap: 1rem;
 
     button {
@@ -28,7 +27,6 @@
 
       box-sizing: border-box;
 
-      padding: 10px;
       padding-bottom: 50px;
 
       border: 2px solid $color-smokeWhite;
@@ -104,10 +102,6 @@
     }
   }
 
-}
-
-.searcher {
-  padding-top: 36px;
 }
 
 .custom-select {

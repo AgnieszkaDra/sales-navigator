@@ -1,6 +1,6 @@
 import { collection, doc, getDoc,  getDocs } from "firebase/firestore";
 import { db } from "../firebase/config";
-import { PropertySchema, type Property } from "../types";
+import { PropertySchema, type Property } from "../schemas/property";
 
 export const getProperties = async (): Promise<Property[]> => {
   const snapshot = await getDocs(collection(db, "properties"));

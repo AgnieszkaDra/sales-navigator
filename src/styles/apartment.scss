@@ -2,26 +2,38 @@
 @use './abstracts/index' as *;
 
 .apartment {
- 
-  &__title {
-    text-transform: uppercase;
-    width: fit-content;
-    
-  }
-  &__content {
-    padding-top: 2rem;
-    padding-bottom: 2rem;
+  &__layout {
+     grid-template-areas:
+    "apartment__specification"
+    "apartment__info";
+    @include respond(lg) {
+      grid-template-areas:
+        "apartment__specification apartment__info apartment__info";
+    }
   }
   &__specification {
-    align-items: center;
-    &-label-text {
-      text-align: start;
-      padding-bottom: 0.5rem;
-    }
-    &-value {
-      justify-self: end;
-      
-    }
+    grid-area: apartment__specification;
     
+    align-items: center;
+    gap: 1rem;
+
+    margin: 0;
+   
+
+    &__container {
+      margin: 0;
+    }
+
+    &-label-text {
+      margin: 0;
+    }
+
+    &-value {
+      margin: 0;
+      text-align: right;
     }
   }
+  &__info {
+    grid-area: apartment__info;
+ }
+}

@@ -31,7 +31,7 @@ $typography: (
 
 .h1-subpage {
   @include fluid-type-preset(h1-subpage);
-  font-weight: map-get(sizes.$font-weight, large);
+  font-weight: map-get(sizes.$font-weight, medium);
   line-height: 76px;
   letter-spacing: 2px;
   margin: 40px 0;

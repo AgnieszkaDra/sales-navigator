@@ -1,98 +1,97 @@
-
 import { useEffect, useState } from "react";
 import { useParams } from "react-router-dom";
 import { getProperty } from "../../api/properties";
-import type { Property } from "../../types";
+import type { Property } from "../../schemas/property";
 import "../../styles/apartment.scss";
 import { apartmentSpecifications } from "../../data/apartmentspecificatons";
 import Pagination from "../../ui/Pagination";
 import { getFloorPlan } from "../../utils/getFloorPlan";
 
 const ApartmentPage = () => {
-  const { id } = useParams();
+    const { id } = useParams();
 
-  const [property, setProperty] = useState<Property | null>(null);
-  const [floorPlanUrl, setFloorPlanUrl] = useState<string | null>(null);
+    const [property, setProperty] = useState<Property | null>(null);
+    const [floorPlanUrl, setFloorPlanUrl] = useState<string | null>(null);
+    const [activeTab, setActiveTab] = useState("floorPlan");
 
-  useEffect(() => {
-    if (!id) return;
+    useEffect(() => {
+        if (!id) return;
 
-    getProperty(id)
-      .then((propertyData) => {
-        setProperty(propertyData);
-      })
-      .catch((error) => {
-        console.error("Nie udało się pobrać mieszkania:", error);
-        setProperty(null);
-      });
-  }, [id]);
+        getProperty(id)
+            .then((propertyData) => {
+                setProperty(propertyData);
+            })
+            .catch((error) => {
+                console.error("Nie udało się pobrać mieszkania:", error);
+                setProperty(null);
+            });
+    }, [id]);
 
-  useEffect(() => {
-    if (!property?.floorPlan) {
-      // eslint-disable-next-line react-hooks/set-state-in-effect
-      setFloorPlanUrl(null);
-      return;
+    useEffect(() => {
+        if (!property?.floorPlan) {
+            // eslint-disable-next-line react-hooks/set-state-in-effect
+            setFloorPlanUrl(null);
+            return;
+        }
+
+        getFloorPlan(property.floorPlan)
+            .then(setFloorPlanUrl)
+            .catch((error) => {
+                console.error("Nie udało się pobrać rzutu:", error);
+                setFloorPlanUrl(null);
+            });
+    }, [property?.floorPlan]);
+
+    if (!property) {
+        return <p>Ładowanie...</p>;
     }
 
-    getFloorPlan(property.floorPlan)
-      .then(setFloorPlanUrl)
-      .catch((error) => {
-        console.error("Nie udało się pobrać rzutu:", error);
-        setFloorPlanUrl(null);
-      });
-  }, [property?.floorPlan]);
-
-  if (!property) {
-    return <p>Ładowanie...</p>;
-  }
-
-  return (
-    <section className="apartment page-width">
-      <div className="flex-center">
-        <h1
-          id="apartment-title"
-          className="h1-header apartment__title border-2 border-bottom-solid border-orangeBrown"
-        >
-          {property.title}
-        </h1>
-      </div>
-
-      <div className="apartment__content hero-inner page-width" />
-
-     <div className="apartment__layout grid grid--5-col-desktop">
-        <div className="apartment__specification grid grid--1-col grid__item span-2">
-          {apartmentSpecifications.map(({ key, label, getValue }) => (
-            <div
-              key={key}
-              className="apartment__specification-container grid__item"
-            >
-              <div className="apartment__specification grid grid--2-1 border-2 border-bottom-solid border-smokeWhite">
-                <p className="apartment__specification-label-text fw-medium">
-                  {label}
-                </p>
-
-                <div className="apartment__specification-value fw-medium">
-                  {getValue(property)}
-                </div>
-              </div>
+    return (
+        <section className="apartment page-width">
+            <div className="flex-center">
+                <h1
+                    id="apartment-title"
+                    className="h1-subpage uppercase border-2 border-bottom-solid border-orangeBrown"
+                >
+                    {property.title}
+                </h1>
             </div>
-          ))}
-        </div>
 
-        <div className="grid__item span-3 border-2 border-all-solid border-smokeWhite">
-          <Pagination />
+            <div className="apartment__layout grid grid--1-col grid--2-col-tablet-down grid--3-col-desktop padding-section">
+                <div className="apartment__specification grid grid--1-col grid__item">
+                    {apartmentSpecifications.map(({ key, label, getValue }) => (
+                        <dl
+                            key={key}
+                            className="apartment__specification__container flex space-between padding-item border-2 border-bottom-solid border-smokeWhite"
+                        >
+                            <dt className="apartment__specification-label-text fw-medium">
+                                {label}
+                            </dt>
 
-          {floorPlanUrl && (
-            <img
-              src={floorPlanUrl}
-              alt={`Rzut mieszkania ${property.title}`}
-            />
-          )}
-        </div>
-      </div>
-    </section>
-  );
+                            <dd className="apartment__specification-value fw-medium">
+                                {getValue(property)}
+                            </dd>
+                        </dl>
+                    ))}
+                </div>
+
+                <div className="apartment__info grid__item border-2 border-all-solid border-smokeWhite">
+                    <Pagination
+                        className="apartment"
+                        activeTab={activeTab}
+                        onTabChange={setActiveTab}
+                    />
+
+                    {activeTab === "floorPlan" && floorPlanUrl && (
+                        <img
+                            src={floorPlanUrl}
+                            alt={`Rzut mieszkania ${property.title}`}
+                        />
+                    )}
+                </div>
+            </div>
+        </section>
+    );
 };
 
 export default ApartmentPage;
-

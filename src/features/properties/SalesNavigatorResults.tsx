@@ -54,8 +54,7 @@ const SalesNavigatorResults = ({
       </div>
     );
   } 
-  console.log("RESULT:", results);
-
+  
   return (
     <div className="sales-navigator-results">
       <h4
@@ -66,7 +65,7 @@ const SalesNavigatorResults = ({
       </h4>
       <div
         role="list"
-        className="sales-navigator-results__grid grid grid--1-col grid--2-col-tablet-down grid--3-col-desktop"
+        className="sales-navigator-results grid grid--1-col grid--2-col-tablet-down grid--3-col-desktop padding-section"
         aria-labelledby="search-results-heading"
       >
         {results.map((item) => {
@@ -76,7 +75,7 @@ const SalesNavigatorResults = ({
               <div
                 role="listitem"
                 key={item.id}
-                className="sales-navigator-results__item grid__item"
+                className="sales-navigator-results__item grid__item padding-item"
                 aria-labelledby={`apartment-title-${item.id}`}
               >
                 <div className="sales-navigator-results__card">

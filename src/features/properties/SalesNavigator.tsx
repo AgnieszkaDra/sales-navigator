@@ -106,8 +106,7 @@ const SalesNavigator = () => {
 
   const filtered = (() => {
   let result = [...properties];
-  console.log(properties);
-
+  
   // Status
   if (filters.status !== "all") {
     result = result.filter(
@@ -191,6 +190,7 @@ const SalesNavigator = () => {
             grid--1-col
             grid--2-col-tablet-down
             grid--3-col-desktop
+            padding-section
             "
           aria-labelledby="filters-heading"
         >
@@ -382,7 +382,7 @@ const SalesNavigator = () => {
           </div>
         )}
 
-        <div className="sales-navigator__actions">
+        <div className="sales-navigator__actions padding-section">
           <button
             className="more-filters-button btn h5-input"
             onClick={() =>

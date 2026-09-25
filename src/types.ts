@@ -9,45 +9,45 @@ export const STATUS_LABELS = {
 
 export const statusEnum = z.enum(["available", "reserved", "sold"]);
 
-const booleanFromPolish = z.preprocess((value) => {
-  if (typeof value === "string") {
-    return value.toLowerCase() === "tak";
-  }
+// const booleanFromPolish = z.preprocess((value) => {
+//   if (typeof value === "string") {
+//     return value.toLowerCase() === "tak";
+//   }
 
-  return value;
-}, z.boolean());
+//   return value;
+// }, z.boolean());
 
-const numberFromString = z.preprocess((value) => {
-  if (typeof value === "string") {
-    return Number(value.replace(",", "."));
-  }
+// const numberFromString = z.preprocess((value) => {
+//   if (typeof value === "string") {
+//     return Number(value.replace(",", "."));
+//   }
 
-  return value;
-}, z.number());
+//   return value;
+// }, z.number());
 
-export const PropertySchema = z.object({
-  id: z.string(),
+// export const PropertySchema = z.object({
+//   id: z.string(),
 
-  title: z.string(),
-  location: z.string().default("Brak lokalizacji"),
+//   title: z.string(),
+//   location: z.string().default("Brak lokalizacji"),
 
-  price: numberFromString,
+//   price: numberFromString,
 
-  status: statusEnum,
+//   status: statusEnum,
 
-  area: numberFromString,
-  rooms: numberFromString,
+//   area: numberFromString,
+//   rooms: numberFromString,
 
-  floorPlan: z.string().optional(),
+//   floorPlan: z.string().optional(),
 
-  features: z.object({
-    floor: z.string().optional(),
-    balcony: booleanFromPolish,
-    terrace: booleanFromPolish,
-    wardrobe: booleanFromPolish,
-    separateKitchen: booleanFromPolish,
-  }).optional(),
-});
+//   features: z.object({
+//     floor: z.string().optional(),
+//     balcony: booleanFromPolish,
+//     terrace: booleanFromPolish,
+//     wardrobe: booleanFromPolish,
+//     separateKitchen: booleanFromPolish,
+//   }).optional(),
+// });
 
-export type Property = z.infer<typeof PropertySchema>;
+// export type Property = z.infer<typeof PropertySchema>;
 

@@ -1,0 +1,60 @@
+.pagination { 
+    &__desktop { 
+        display: flex; 
+        justify-content: space-between;
+        border-bottom: 1px solid #ddd; 
+        &-apartment {
+            box-sizing: content-box;
+        }
+    } 
+    &__button { 
+        padding: 12px 0; 
+        border: none; 
+        border-bottom: 2px solid transparent;
+        background: none; 
+        color: #999; 
+        cursor: pointer; 
+        font-weight: 400; 
+        &.is-active { 
+         color: #000; 
+         font-weight: 600; 
+         border-bottom-color: #000; 
+        } 
+    } 
+    &__mobile { 
+        display: none; 
+    } 
+    &__current { 
+        font-weight: 600; 
+    } 
+    &__dots { 
+        display: flex; 
+        align-items: center; 
+        justify-content: center; 
+        gap: 8px; 
+    } 
+    &__dot { 
+        width: 8px; 
+        height: 8px; 
+        padding: 0; 
+        border: 0; 
+        border-radius: 50%; 
+        background: #ccc; 
+        cursor: pointer; 
+        &.is-active { 
+            background: #000; 
+        } 
+    }
+     
+} 
+@media (max-width: 768px) { 
+    .pagination { 
+        &__desktop { 
+            display: none; 
+        } 
+        &__mobile { 
+            display: flex; 
+            flex-direction: column; 
+            align-items: center; 
+            gap: 12px; 
+        } } }
