@@ -1,4 +1,5 @@
-import type { Property } from "../types";
+import type { Property } from "@/schemas/property";
+
 
 export const apartmentSpecifications = [
   {
@@ -25,4 +26,24 @@ export const apartmentSpecifications = [
         .replace(".", ",")
         .replace(/\B(?=(\d{3})+(?!\d))/g, "."),
   },
+];
+
+
+export const apartmentPages = [
+    {
+        id: "floorPlan",
+        label: "Rzut mieszkania",
+    },
+    {
+        id: "location",
+        label: "Lokalizacja",
+    },
+    {
+        id: "virtualTour",
+        label: "Spacer wirtualny",
+    },
+    {
+        id: "virtualTour2",
+        label: "Spacer wirtualny",
+    },
 ];

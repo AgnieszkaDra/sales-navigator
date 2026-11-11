@@ -1,79 +1,403 @@
 @use "sass:map";
 @use './abstracts/index' as *;
 
+// .header {
+//   position: relative;
+//   z-index: 2000;
+//   height: 80px;
+//   margin: auto;
+//   font-family: var(--font-header-family);
+//   overflow-x: hidden;
+  
+//   &__mobile {
+//     position: absolute;
+//     inset: 0;
+    
+//     display: flex;
+//     align-items: center;
+//     justify-content: flex-end;
+
+//     height: 100%;
+
+//     @include respond(md) {
+//       display: none;
+//     }
+//   }
+// }
+
+// .header {
+//   position: relative;
+//   z-index: 2000;
+//   height: 80px;
+//   margin: auto;
+//   font-family: var(--font-header-family);
+//   overflow-x: hidden;
+
+//   &__mobile {
+//     position: absolute;
+//     inset: 0;
+
+//     display: flex;
+//     align-items: center;
+//     justify-content: flex-end;
+
+//     height: 100%;
+
+//     @include respond(lg) {
+//       display: none;
+//     }
+//   }
+// }
+
+// .header {
+//   position: relative;
+//   z-index: 2000;
+
+//   height: 80px;
+//   margin: auto;
+
+//   font-family: var(--font-header-family);
+//   overflow: visible;
+
+//   &__mobile {
+//     position: absolute;
+//     inset: 0;
+//     z-index: 2100;
+
+//     display: flex;
+//     align-items: center;
+//     justify-content: flex-end;
+
+//     height: 80px;
+
+//     @include respond(lg) {
+//       display: none;
+//     }
+//   }
+// }
+
+
+// // .nav {
+// //   position: fixed;
+// //   top: 0;
+// //   left: 0;
+// //   z-index: 100;
+
+// //   width: 100%;
+// //   height: auto;
+
+// //   pointer-events: none;
+// //   transform: translateX(100%);
+
+// //   @include respond(lg) {
+// //     position: relative;
+
+// //     pointer-events: auto;
+
+// //     transform: none !important;
+// //   }
+// // }
+
+// // .nav {
+// //   position: fixed;
+// //   top: 0;
+// //   left: 0;
+// //   z-index: 100;
+
+// //   width: 100%;
+// //   height: auto;
+
+// //   pointer-events: none;
+
+// //   @include respond(lg) {
+// //     position: relative;
+// //     top: auto;
+// //     left: auto;
+
+// //     pointer-events: auto;
+// //     transform: none !important;
+// //   }
+// // }
+
+// .nav {
+//   position: fixed;
+//   top: 0;
+//   left: 0;
+//   z-index: 100;
+
+//   width: 100%;
+//   height: auto;
+
+//   @include respond(lg) {
+//     position: relative;
+//     top: auto;
+//     left: auto;
+
+//     width: 100%;
+//   }
+// }
+
+
+// // .burger-menu {
+// //   @include flexAbsoluteCenter;
+
+// //   padding: 8px;
+
+// //   border: none;
+ 
+// //   cursor: pointer;
+
+// //   svg {
+// //     color: var(--color-lightGrey);
+// //   }
+// // }
+
+// .burger-menu {
+//   @include flexAbsoluteCenter;
+
+//   padding: 8px;
+//   border: none;
+//   cursor: pointer;
+
+//   svg {
+//     color: var(--color-lightGrey);
+//   }
+// }
+
+// // .menu {
+// //   position: relative;
+// //   z-index: 100;
+
+// //   flex-direction: column;
+
+// //   padding-top: 80px;
+
+// //   overflow: visible;
+
+// //   @include respond(md) {
+// //     display: grid;
+// //     grid-auto-flow: column;
+// //     grid-auto-columns: 1fr;
+// //     flex-direction: row;
+
+// //     height: auto;
+    
+// //     padding-top: 0;
+
+// //   }
+
+// //   & > * {
+// //     display: flex;
+// //     align-items: center;
+// //     justify-content: flex-start;
+
+// //     @include respond(md) {
+// //       justify-content: center;
+// //     }
+// //   }
+
+// //   &__item {
+// //     position: relative;
+
+// //     width: 100%;
+// //     min-width: 0;
+
+// //     overflow: visible;
+
+// //     @include respond(md) {
+// //       text-transform: none;
+// //       width: auto;
+// //     }
+
+// //     &--find {
+// //       position: relative;
+
+// //       @include respond(md) {
+// //         border: 1px solid var(--color-white);
+
+// //         &::after {
+// //           content: "";
+
+// //           position: absolute;
+// //           inset: -5px;
+
+// //           padding: 1px;
+
+// //           border-radius: inherit;
+
+// //           background: linear-gradient(
+// //             90deg,
+// //             var(--color-white) 0%,
+// //             var(--color-orangeBrown) 45%,
+// //             var(--color-white) 50%,
+// //             var(--color-white) 100%
+// //           );
+
+// //           background-size: 300% 100%;
+// //           background-position: 100% 0;
+
+// //           -webkit-mask:
+// //             linear-gradient(var(--color-white) 0 0) content-box,
+// //             linear-gradient(var(--color-white) 0 0);
+// //           -webkit-mask-composite: xor;
+
+// //           mask:
+// //             linear-gradient(var(--color-white) 0 0) content-box,
+// //             linear-gradient(var(--color-white) 0 0);
+// //           mask-composite: exclude;
+
+// //           pointer-events: none;
+// //         }
+
+// //         &:hover::after {
+// //           animation: gradient-move 2s linear;
+// //         }
+// //       }
+
+// //       // .menu__link {
+// //       //   position: relative;
+// //       //   z-index: 2;
+// //       // }
+// //     }
+// //   }
+
+// //   &__slot {
+// //     display: none;
+// //     @include respond(md) {
+      
+// //       @include flexAbsoluteCenter;
+// //     }
+// //   }
+// // }
+
+// .menu {
+//   position: relative;
+//   z-index: 100;
+
+//   display: flex;
+//   flex-direction: column;
+
+//   padding-top: 80px;
+//   overflow: visible;
+
+//   @include respond(lg) {
+//     display: grid;
+//     grid-auto-flow: column;
+//     grid-auto-columns: 1fr;
+
+//     flex-direction: row;
+
+//     height: auto;
+//     padding-top: 0;
+//   }
+
+//   & > * {
+//     display: flex;
+//     align-items: center;
+//     justify-content: flex-start;
+
+//     @include respond(lg) {
+//       justify-content: center;
+//     }
+//   }
+
+//   &__slot {
+//     display: none;
+
+//     @include respond(lg) {
+//       @include flexAbsoluteCenter;
+//     }
+//   }
+// }
+
+// @keyframes gradient-move {
+//   to {
+//     background-position: -200% 0;
+//   }
+// }
+
+// .menu__link {
+//   all: unset;
+
+//   position: relative;
+
+//   line-height: 26px;
+  
+//   background-color: transparent;
+
+//   cursor: pointer;
+//   transition: opacity 0.3s;
+
+//   &:hover,
+//   &:focus {
+//     opacity: 0.7;
+//     outline: none;
+//   }
+
+//   &--contact-form {
+    
+//     @include respond(md) {
+//       border-radius: 15px;
+//     }
+//   }
+// }
+
+
 .header {
   position: relative;
   z-index: 2000;
 
+  height: 80px;
+  margin: auto;
+
+  font-family: var(--font-header-family);
+  overflow: visible;
+  align-items: center;
+}
+
+// MOBILE HEADER
+.header__mobile {
+  position: absolute;
+  inset: 0;
+  z-index: 2100;
+
   display: flex;
   align-items: center;
+  justify-content: flex-end;
 
   height: 80px;
 
-  margin: auto;
-  padding: 0 40px;
-
-  color: var(--color-white);
-  font-family: var(--font-header-family);
-
-  background-color: var(--color-black);
-  overflow: visible;
-
-  &__mobile {
-    position: absolute;
-    inset: 0;
-    z-index: 2000;
-
-    display: flex;
-    align-items: center;
-    justify-content: flex-end;
-
-    height: 100%;
-
-    background-color: var(--color-white);
-
-    @include respond(md) {
-      display: none;
-    }
+  @include respond(lg) {
+    display: none;
   }
 }
 
+// NAVIGATION
 .nav {
   position: fixed;
-  top: 0;
+  top: 60px;
   left: 0;
   z-index: 100;
 
   width: 100%;
   height: auto;
 
-  font-size: 12px;
-  line-height: 2.09em;
-  letter-spacing: 0.3em;
-  font-weight: 500;
-
-  pointer-events: none;
-  transform: translateX(100%);
-
   @include respond(lg) {
     position: relative;
+    top: 60px;
+    left: auto;
 
     width: 100%;
-    height: auto;
-
-    pointer-events: auto;
-
-    transform: none !important;
   }
 }
 
+// HAMBURGER
 .burger-menu {
   @include flexAbsoluteCenter;
+  z-index: 3000;
 
   padding: 8px;
-
   border: none;
- 
   cursor: pointer;
 
   svg {
@@ -87,26 +411,19 @@
 
   display: flex;
   flex-direction: column;
-  align-items: center;
 
-  padding: 80px 2rem 0;
-
-  color: var(--color-black);
-  background-color: var(--color-white);
+  padding-top: 80px;
   overflow: visible;
 
-  @include respond(md) {
+  @include respond(lg) {
     display: grid;
     grid-auto-flow: column;
     grid-auto-columns: 1fr;
+
     flex-direction: row;
 
     height: auto;
-    
     padding-top: 0;
-
-    color: var(--color-white);
-    background-color: var(--color-black);
   }
 
   & > * {
@@ -114,7 +431,7 @@
     align-items: center;
     justify-content: flex-start;
 
-    @include respond(md) {
+    @include respond(lg) {
       justify-content: center;
     }
   }
@@ -123,21 +440,19 @@
     position: relative;
 
     width: 100%;
-
-    padding: 9px min(0.5rem, 2vw);
+    min-width: 0;
 
     overflow: visible;
 
-    text-transform: uppercase;
-
-    @include respond(md) {
+    @include respond(lg) {
       text-transform: none;
+      width: auto;
     }
 
     &--find {
       position: relative;
 
-      @include respond(md) {
+      @include respond(lg) {
         border: 1px solid var(--color-white);
 
         &::after {
@@ -147,7 +462,6 @@
           inset: -5px;
 
           padding: 1px;
-
           border-radius: inherit;
 
           background: linear-gradient(
@@ -162,13 +476,13 @@
           background-position: 100% 0;
 
           -webkit-mask:
-            linear-gradient(#fff 0 0) content-box,
-            linear-gradient(#fff 0 0);
+            linear-gradient(var(--color-white) 0 0) content-box,
+            linear-gradient(var(--color-white) 0 0);
           -webkit-mask-composite: xor;
 
           mask:
-            linear-gradient(#fff 0 0) content-box,
-            linear-gradient(#fff 0 0);
+            linear-gradient(var(--color-white) 0 0) content-box,
+            linear-gradient(var(--color-white) 0 0);
           mask-composite: exclude;
 
           pointer-events: none;
@@ -178,18 +492,15 @@
           animation: gradient-move 2s linear;
         }
       }
-
-      .menu__link {
-        position: relative;
-        z-index: 2;
-      }
     }
   }
-}
 
-@keyframes gradient-move {
-  to {
-    background-position: -200% 0;
+  &__slot {
+    display: none;
+
+    @include respond(lg) {
+      @include flexAbsoluteCenter;
+    }
   }
 }
 
@@ -199,10 +510,7 @@
   position: relative;
 
   line-height: 26px;
-  font-weight: 500;
-
   background-color: transparent;
-  border-radius: 15px;
 
   cursor: pointer;
   transition: opacity 0.3s;
@@ -214,11 +522,14 @@
   }
 
   &--contact-form {
-    
-    @include respond(md) {
-      font-size: var(--font-size-base);
+    @include respond(lg) {
       border-radius: 15px;
-      background-color: var(--color-orangeBrown);
     }
+  }
+}
+
+@keyframes gradient-move {
+  to {
+    background-position: -200% 0;
   }
 }

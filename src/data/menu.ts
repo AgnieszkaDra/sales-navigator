@@ -5,7 +5,7 @@ const items: Record<number, MenuLink> = {
     id: 1,
     label: "Znajdź mieszkanie",
     path: "Znajdź mieszkanie",
-    className: "border-1 border-all-solid border-orangeBrown menu__item--find",
+    className: "border-1 border-all-solid border-orangeBrown menu__item--find"
   },
   2: {
     id: 2,
@@ -21,7 +21,7 @@ const items: Record<number, MenuLink> = {
     id: 4,
     label: "Napisz do nas",
     path: "Napisz do nas",
-    className: "menu__link--contact-form padding-2",
+    className: "menu__link--contact-form padding-2 background-orangeBrown",
   },
 };
 

@@ -1,0 +1,199 @@
+@use "sass:map";
+@use '../../styles/abstracts/index' as *;
+
+.header {
+  position: relative;
+  z-index: 2000;
+
+  display: flex;
+  align-items: center;
+
+  height: 80px;
+  margin: auto;
+
+  font-family: var(--font-header-family);
+  overflow: visible;
+
+  &__mobile {
+    position: realtive;
+    inset: 0;
+    z-index: 2100;
+
+    display: flex;
+    align-items: center;
+    justify-content: flex-end;
+
+    height: 60px;
+
+    &--open {
+      background-color: var(--color-black);
+    }
+
+    @include respond(lg) {
+      display: none;
+    }
+  }
+}
+
+// NAVIGATION
+.nav {
+  position: fixed;
+  top: 60px;
+  left: 0;
+  z-index: 100;
+
+  width: 100%;
+  height: auto;
+
+  @include respond(lg) {
+    position: relative;
+    top: auto;
+    left: auto;
+
+    width: 100%;
+  }
+}
+
+// HAMBURGER
+.burger-menu {
+  @include flexAbsoluteCenter;
+
+  padding: 8px;
+  border: none;
+  cursor: pointer;
+
+  svg {
+    color: var(--color-lightGrey);
+  }
+}
+
+// MENU
+.menu {
+  position: relative;
+  z-index: 100;
+
+  display: flex;
+  flex-direction: column;
+
+  overflow: visible;
+
+  @include respond(lg) {
+    display: grid;
+    grid-auto-flow: column;
+    grid-auto-columns: 1fr;
+
+    flex-direction: row;
+
+    height: auto;
+    padding-top: 0;
+  }
+
+  & > * {
+    display: flex;
+    align-items: center;
+    justify-content: flex-start;
+
+    @include respond(lg) {
+      justify-content: center;
+    }
+  }
+
+  &__item {
+    position: relative;
+
+    width: 100%;
+    min-width: 0;
+
+    overflow: visible;
+
+    @include respond(lg) {
+      text-transform: none;
+      width: auto;
+    }
+
+    &--find {
+      position: relative;
+
+      @include respond(lg) {
+        border: 1px solid var(--color-white);
+
+        &::after {
+          content: "";
+
+          position: absolute;
+          inset: -5px;
+
+          padding: 1px;
+          border-radius: inherit;
+
+          background: linear-gradient(
+            90deg,
+            var(--color-white) 0%,
+            var(--color-orangeBrown) 45%,
+            var(--color-white) 50%,
+            var(--color-white) 100%
+          );
+
+          background-size: 300% 100%;
+          background-position: 100% 0;
+
+          -webkit-mask:
+            linear-gradient(var(--color-white) 0 0) content-box,
+            linear-gradient(var(--color-white) 0 0);
+          -webkit-mask-composite: xor;
+
+          mask:
+            linear-gradient(var(--color-white) 0 0) content-box,
+            linear-gradient(var(--color-white) 0 0);
+          mask-composite: exclude;
+
+          pointer-events: none;
+        }
+
+        &:hover::after {
+          animation: gradient-move 2s linear;
+        }
+      }
+    }
+  }
+
+  &__slot {
+    display: none;
+
+    @include respond(lg) {
+      @include flexAbsoluteCenter;
+    }
+  }
+}
+
+// MENU LINK
+.menu__link {
+  all: unset;
+
+  position: relative;
+
+  line-height: 26px;
+  background-color: transparent;
+
+  cursor: pointer;
+  transition: opacity 0.3s;
+
+  &:hover,
+  &:focus {
+    opacity: 0.7;
+    outline: none;
+  }
+
+  &--contact-form {
+    @include respond(lg) {
+      border-radius: 15px;
+    }
+  }
+}
+
+// ANIMATIONS
+@keyframes gradient-move {
+  to {
+    background-position: -200% 0;
+  }
+}

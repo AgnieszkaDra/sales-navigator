@@ -1,10 +1,10 @@
-import Header from "../components/Header";
-import SalesNavigator from "../features/properties/SalesNavigator";
+import { HeaderLayout } from "../components/Header";
+import SalesNavigator from "../components/SalesNavigator/SalesNavigator";
 
 const HomePage = () => {
   return (
     <>
-      <Header />
+      <HeaderLayout />
       <SalesNavigator />
     </>
   );

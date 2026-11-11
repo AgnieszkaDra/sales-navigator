@@ -1,4 +1,4 @@
-import { z } from "zod";
+//import { z } from "zod";
 
 export const STATUS_LABELS = {
   available: "Dostępny",
@@ -7,7 +7,7 @@ export const STATUS_LABELS = {
 } as const;
 
 
-export const statusEnum = z.enum(["available", "reserved", "sold"]);
+//export const statusEnum = z.enum(["available", "reserved", "sold"]);
 
 // const booleanFromPolish = z.preprocess((value) => {
 //   if (typeof value === "string") {

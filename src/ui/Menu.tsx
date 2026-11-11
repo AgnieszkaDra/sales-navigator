@@ -29,12 +29,22 @@ const MenuItemComponent = ({
 
   return (
     <li
-      className={`menu__item ${item.className ?? ""}`}
+      className={`
+        menu__item 
+        ${item.className ?? ""} 
+        padding-item 
+        uppercase`
+      }
       role="none"
     >
       <a
         href={`#${item.path}`}
-        className="menu__link text"
+        className="
+          menu__link 
+          text 
+          h5-lead 
+          uppercase
+        "
         role="menuitem"
       >
         <span>{item.label}</span>
@@ -53,12 +63,20 @@ const Menu = ({ slots }: MenuProps): JSX.Element => {
 
   return (
     <ul
-      className="menu"
+      className="
+        menu 
+        flex-center
+        page-width
+    "
       role="menu"
       aria-label="Main menu"
     >
       {slots?.start && (
-        <li className="menu__slot menu__slot--start">
+        <li className="
+          menu__slot 
+          menu__slot--start 
+          padding-item
+        ">
           {slots.start}
         </li>
       )}
@@ -72,7 +90,12 @@ const Menu = ({ slots }: MenuProps): JSX.Element => {
       ))}
 
       {slots?.center && (
-        <li className="menu__slot menu__item menu__slot--center">
+        <li className="
+          menu__slot 
+          menu__item 
+          menu__slot--center 
+          padding-item
+          ">
           {slots.center}
         </li>
       )}
@@ -86,7 +109,11 @@ const Menu = ({ slots }: MenuProps): JSX.Element => {
       ))}
 
       {slots?.end && (
-        <li className="menu__slot menu__slot--end">
+        <li className="
+          menu__slot 
+          menu__slot--end 
+          padding-item
+        ">
           {slots.end}
         </li>
       )}

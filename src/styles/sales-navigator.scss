@@ -2,9 +2,6 @@
 
 .sales-navigator {
   text-align: center;
-  &__title {
-    text-transform: uppercase;
-  }
   &__actions {
     display: flex;
     justify-content: space-between;
@@ -17,12 +14,7 @@
     }
   }
   &-results {
-    padding-top: 36px;
-    &__title {
-      text-transform: uppercase;
-      margin: 0;
-    }
-    &__item {
+  &__item {
       position: relative;
 
       box-sizing: border-box;
@@ -35,9 +27,7 @@
       display: flex;
       flex-direction: column;
       height: 100%;
-      & > * {
-        margin-bottom: 2px;
-      }
+     
     }
     &__status {
       position: absolute;
@@ -46,9 +36,8 @@
       z-index: 4;
 
       min-width: 100px;
-      padding: 10px 20px;
-
-      text-transform: uppercase;
+      
+     
 
     &--available {
       background-color: $color-statusAvailable;
@@ -70,8 +59,8 @@
     &__title {
       color: $color-fontLight;
 
-      font-family: var(--typography-primary-font-family);
-      letter-spacing: 0.15em;
+      //font-family: var(--typography-primary-font-family);
+      //letter-spacing: 0.15em;
     }
     &__price {
       width: max-content;
@@ -83,15 +72,8 @@
       border-collapse: collapse;
       border: 1px solid $color-smokeWhite;
     }
-    &__table-heading,
-    &__table-cell {
-      padding: 0.75rem;
-      border: 1px solid $color-smokeWhite;
-    }
+   
 
-    &__table-row--header {
-      background-color: $color-smokeWhite;
-    }
     &__actions {
       position: absolute;
       right: -10px;
@@ -116,12 +98,10 @@
     grid-template-columns: 90% 10%;
 
     width: 100%;
-    padding: 10px 12px 15px;
-
+    
     font-family: var(--font-third-family);
 
-    background: $color-white;
-    border: 1px solid $color-smokeWhite;
+    border: 1px solid var(--color-smokeWhite);
     cursor: pointer;
 
     transition: border-color 0.2s ease, box-shadow 0.2s ease;
@@ -154,7 +134,7 @@
   &__value {
     overflow: hidden;
 
-    color: $color-fontLight;
+    color: var(--color-fontLight);
 
     text-align: start;
     text-overflow: ellipsis;

@@ -2,38 +2,48 @@
 @use './abstracts/index' as *;
 
 .apartment {
+  //  width: 100%;
+  // max-width: 100%;
+  // min-width: 0;
   &__layout {
+    // width: 100%;
+    // max-width: 100%;
+    min-width: 0;
+    overflow-x: clip;
+    grid-template-columns: minmax(0, 1fr);
+    box-sizing: border-box;
+    font-family: var(--font-heading-family);
+    overflow: hidden;
      grid-template-areas:
     "apartment__specification"
     "apartment__info";
     @include respond(lg) {
       grid-template-areas:
         "apartment__specification apartment__info apartment__info";
+        align-items: start;
     }
   }
   &__specification {
+    
     grid-area: apartment__specification;
+   
     
     align-items: center;
     gap: 1rem;
 
     margin: 0;
+
+    
    
-
-    &__container {
-      margin: 0;
-    }
-
-    &-label-text {
-      margin: 0;
-    }
-
     &-value {
-      margin: 0;
       text-align: right;
     }
   }
   &__info {
+    font-family: var(--font-heading-family);
     grid-area: apartment__info;
+ }
+ &__subtitle {
+  margin: 0;
  }
 }

@@ -1,6 +1,6 @@
 import { Link } from "react-router-dom";
-import { STATUS_LABELS } from "../../types";
-import type { Status } from "./CustomSelect";
+import { STATUS_LABELS } from "@/types";
+import type { Status } from "../../schemas/filters";
 
 type SalesNavigatorResult = {
   id: string | number;
@@ -58,14 +58,14 @@ const SalesNavigatorResults = ({
   return (
     <div className="sales-navigator-results">
       <h4
-        className="h2-header sales-navigator-results__title"
+        className="h2-header uppercase sales-navigator-results__title"
         id="search-results-heading"
       >
         Wyniki wyszukiwania ({results.length})
       </h4>
       <div
         role="list"
-        className="sales-navigator-results grid grid--1-col grid--2-col-tablet-down grid--3-col-desktop padding-section"
+        className="sales-navigator-results grid grid--1-col grid--2-col-tablet-down grid--3-col-desktop padding-top-standard"
         aria-labelledby="search-results-heading"
       >
         {results.map((item) => {
@@ -81,7 +81,7 @@ const SalesNavigatorResults = ({
                 <div className="sales-navigator-results__card">
                   <div className="sales-navigator-results__top">
                     <span
-                      className={`sales-navigator-results__status h5-lead sales-navigator-results__status--${item.status}`}
+                      className={`sales-navigator-results__status h5-lead sales-navigator-results__status--${item.status} padding-item uppercase`}
                       aria-label={`Status mieszkania: ${STATUS_LABELS[item.status]}`}
                     >
                       {STATUS_LABELS[item.status]}
@@ -105,31 +105,32 @@ const SalesNavigatorResults = ({
 
                   <h4 
                     id={`apartment-title-${item.id}`}
-                    className="sales-navigator-results__title h4-title">
+                    className="uppercase h4-title">
                     {item.title}
                   </h4>
 
-                  <div className="sales-navigator-results__price btn h5-lead">
+                  <div className="sales-navigator-results__price btn padding-item">
                     {item.price?.toLocaleString("pl-PL")} zł
                   </div>
                 
-                  <table 
-                    className="sales-navigator-results__table"
-                    aria-label={`Parametry mieszkania ${item.title}`}
-                  >
+                  <div className="sales-navigator-results__table-wrapper">
+                    <table 
+                      className="sales-navigator-results__tabl"
+                      aria-label={`Parametry mieszkania ${item.title}`}
+                    >
                     <tbody>
                       <tr 
                        className="sales-navigator-results__table-row sales-navigator-results__table-row--header"
                       >
                         <th
                           scope="col"
-                          className="sales-navigator-results__table-heading"
+                          className="padding-item background-smokeWhite"
                         >
                           Pokoje
                         </th>
                         <th 
                           scope="col"
-                          className="sales-navigator-results__table-heading"
+                          className="padding-item background-smokeWhite"
                         >
                           Powierzchnia
                         </th>
@@ -151,13 +152,14 @@ const SalesNavigatorResults = ({
                         </td>
                       </tr>
                     </tbody>
-                  </table>
-
+                    </table>
+                  </div>
+                  
                   <div className="sales-navigator-results__actions">
                     <Link
                       to={`/oferta/${item.id}`}
                       target="_blank"
-                      className="sales-navigator-results__button btn"
+                      className="sales-navigator-results__button btn padding-item"
                     >
                       Zobacz mieszkanie
                     </Link>

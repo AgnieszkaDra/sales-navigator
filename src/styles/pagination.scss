@@ -1,22 +1,25 @@
 .pagination { 
+    font-family: var(--font-heading-family);
     &__desktop { 
         display: flex; 
         justify-content: space-between;
-        border-bottom: 1px solid #ddd; 
+        
         &-apartment {
             box-sizing: content-box;
         }
     } 
     &__button { 
-        padding: 12px 0; 
+        font-size: var(--font-size-base);
+        font-family: var(--font-heading-family);
+        color: var(--color-text);
         border: none; 
-        border-bottom: 2px solid transparent;
+     
         background: none; 
-        color: #999; 
+     
         cursor: pointer; 
-        font-weight: 400; 
+       
         &.is-active { 
-         color: #000; 
+         color: var(--color-orangeBrown);
          font-weight: 600; 
          border-bottom-color: #000; 
         } 

@@ -1,9 +1,5 @@
 import { useState, useRef, useEffect, useId } from "react";
 import type { KeyboardEvent } from "react";
-import { z } from "zod";
-import { statusEnum } from "../../types";
-
-export type Status = z.infer<typeof statusEnum>;
 
 type SelectOption<T extends string> = {
   value: T;
@@ -157,9 +153,13 @@ export default function CustomSelect<T extends string>({
       <button
         ref={buttonRef}
         type="button"
-        className={`custom-select__trigger input-text ${
-          open ? "is-open" : ""
-        }`}
+        className={`
+          custom-select__trigger 
+          padding-item 
+          text-light
+          background-white
+          ${open ? "is-open" : ""}
+        `}
         onClick={() => setOpen((prev) => !prev)}
         onKeyDown={handleKeyDown}
         aria-haspopup="listbox"
@@ -199,8 +199,10 @@ export default function CustomSelect<T extends string>({
                 id={`${listboxId}-option-${index}`}
                 role="option"
                 aria-selected={isSelected}
-                className={`custom-select__option input-text ${
-                  isSelected ? "is-selected" : ""
+                className={`
+                  custom-select__option 
+                  input-text 
+                  ${isSelected ? "is-selected" : ""
                 }`}
                 onMouseEnter={() =>
                   setHighlightedIndex(index)
