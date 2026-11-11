@@ -17,7 +17,6 @@
   --font-heading-scale: 1;
   --font-body-scale: 1;
   --font-size-base: 20px;
-  //--color-text: 18 18 18;
   --color-text: rgb(40, 40, 40);
   --color-text-light: rgb(122, 122, 122);
   --page-width: 1100px;
@@ -84,10 +83,6 @@ h1, .h1-font {
 
   h1, .h1-font {
     font-size: calc(var(--font-heading-scale) * 4rem);
-  }
-
-  h2, .h2 {
-    //font-size: calc(var(--font-heading-scale) * 3.2rem);
   }
 
   h3, .h3 {

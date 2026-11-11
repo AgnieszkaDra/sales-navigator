@@ -24,6 +24,7 @@ import { filterProperties } from "./utils/filterProperties";
 import "../../styles/sales-navigator.scss";
 
 const SalesNavigator = () => {
+  console.log("Render SalesNavigator");
   const { properties } = useProperties();
 
   const listRef = useRef<HTMLDivElement | null>(null);

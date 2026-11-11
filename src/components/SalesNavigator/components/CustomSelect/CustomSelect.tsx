@@ -1,4 +1,10 @@
-import { useState, useRef, useEffect, useId } from "react";
+import { 
+  useState, 
+  useRef, 
+  useEffect, 
+  useId, 
+  memo 
+} from "react";
 import type { KeyboardEvent } from "react";
 import type { DraftFilters } from "../../schemas/filters";
 
@@ -17,12 +23,14 @@ type CustomSelectProps<K extends keyof DraftFilters> = {
   options: SelectOption<Extract<DraftFilters[K], string>>[];
 };
 
-export default function CustomSelect<K extends keyof DraftFilters>({
+function CustomSelect<K extends keyof DraftFilters>({
   filterKey,
   value,
   updateDraft,
   options,
 }: CustomSelectProps<K>) {
+  
+console.log("Render CustomSelect:", value);
   const [open, setOpen] = useState(false);
   const [highlightedIndex, setHighlightedIndex] = useState(0);
 
@@ -224,3 +232,5 @@ export default function CustomSelect<K extends keyof DraftFilters>({
     </div>
   );
 }
+
+export default memo(CustomSelect) as typeof CustomSelect;
