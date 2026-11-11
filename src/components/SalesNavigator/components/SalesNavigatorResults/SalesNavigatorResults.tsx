@@ -31,9 +31,10 @@ const SalesNavigatorResults = ({
   loading = false,
   emptyMessage = "Brak wyników",
 }: Props) => {
+ 
   if (loading) {
-   
-    return (
+     
+   return (
       <div
         className="sales-navigator-results sales-navigator-results--loading"
         aria-live="polite"

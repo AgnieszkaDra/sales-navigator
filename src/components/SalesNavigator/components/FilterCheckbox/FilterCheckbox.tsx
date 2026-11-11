@@ -1,25 +1,30 @@
+import { memo }  from "react";
+import type { DraftFilters } from "../../schemas/filters";
+
 interface FilterCheckboxProps {
+  filterKey: keyof DraftFilters;
   label: string;
   checked: boolean;
-  onChange: () => void;
+  updateDraft: <T extends keyof DraftFilters>(
+    key: T,
+    value: DraftFilters[T]
+  ) => void;
 }
 
-const FilterCheckbox = ({
-    label,
-    checked,
-    onChange,
-  }: FilterCheckboxProps) => {
-  return (
-    <label className="filters__checkbox grid__item h5-input">
-    <input
-        type="checkbox"
-        className="filters__input"
-        checked={checked}
-        onChange={onChange}
-      />
-    {label}
-  </label>
-  );
-};
+const FilterCheckbox = (
+  ({ filterKey, label, checked, updateDraft }: FilterCheckboxProps) => {
+    
+    return (
+      <label>
+        <input
+          type="checkbox"
+          checked={checked}
+          onChange={() => updateDraft(filterKey, !checked)}
+        />
+        {label}
+      </label>
+    );
+  }
+);
 
-export default FilterCheckbox;
+export default memo(FilterCheckbox);

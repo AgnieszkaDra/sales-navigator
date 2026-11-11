@@ -24,7 +24,7 @@ import { filterProperties } from "./utils/filterProperties";
 import "../../styles/sales-navigator.scss";
 
 const SalesNavigator = () => {
-  console.log("Render SalesNavigator");
+  
   const { properties } = useProperties();
 
   const listRef = useRef<HTMLDivElement | null>(null);
@@ -139,9 +139,10 @@ const SalesNavigator = () => {
             {extraFilters.map(({ key, label }) => (
               <FilterCheckbox
                 key={key}
+                filterKey={key}
                 label={label}
                 checked={draft[key]}
-                onChange={() => updateDraft(key, !draft[key])}
+                updateDraft={updateDraft}
               />
             ))}
           </div>
