@@ -1,24 +1,28 @@
 import { useState, useRef, useEffect, useId } from "react";
 import type { KeyboardEvent } from "react";
+import type { DraftFilters } from "../../schemas/filters";
 
 type SelectOption<T extends string> = {
   value: T;
   label: string;
 };
 
-type CustomSelectProps<T extends string> = {
-  className?: string;
-  options: SelectOption<T>[];
-  value: T;
-  onChange: (value: T) => void;
+type CustomSelectProps<K extends keyof DraftFilters> = {
+  filterKey: K;
+  value: DraftFilters[K];
+  updateDraft: <T extends keyof DraftFilters>(
+    key: T,
+    value: DraftFilters[T]
+  ) => void;
+  options: SelectOption<Extract<DraftFilters[K], string>>[];
 };
 
-export default function CustomSelect<T extends string>({
-  className = "",
-  options,
+export default function CustomSelect<K extends keyof DraftFilters>({
+  filterKey,
   value,
-  onChange,
-}: CustomSelectProps<T>) {
+  updateDraft,
+  options,
+}: CustomSelectProps<K>) {
   const [open, setOpen] = useState(false);
   const [highlightedIndex, setHighlightedIndex] = useState(0);
 
@@ -79,7 +83,7 @@ export default function CustomSelect<T extends string>({
 
     if (!option) return;
 
-    onChange(option.value);
+    updateDraft(filterKey, option.value);
     setOpen(false);
 
     requestAnimationFrame(() => {
@@ -148,7 +152,7 @@ export default function CustomSelect<T extends string>({
   return (
     <div
       ref={ref}
-      className={`custom-select ${className}`}
+      className={`custom-select`}
     >
       <button
         ref={buttonRef}

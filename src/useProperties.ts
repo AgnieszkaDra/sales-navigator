@@ -1,6 +1,6 @@
 import { useEffect, useState } from "react";
 import { getProperties } from "./api/properties";
-import type { Property } from "./types";
+import type { Property } from "./schemas/property";
 
 export const useProperties = () => {
   const [properties, setProperties] = useState<Property[]>([]);
