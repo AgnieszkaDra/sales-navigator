@@ -43,7 +43,7 @@ const HeaderMobile = () => {
         nav 
         nav--mobile
         background-black
-        text-white
+        text-smoke-white
         "
         initial={false}
         animate={{

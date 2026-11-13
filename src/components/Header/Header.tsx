@@ -1,12 +1,13 @@
 import { motion } from 'framer-motion';
 import { Menu, Logo } from '../../ui';
+import './header.scss';
 
 const Header = () => {
   return (
     <motion.header
       className="
         header 
-        text-white 
+        text-smoke-white 
         background-black
       "
       initial={{ opacity: 0, y: -50 }}

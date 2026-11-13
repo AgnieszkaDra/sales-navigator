@@ -67,7 +67,10 @@ const SalesNavigator = () => {
       <div className="elementor-container">
         <h1
           id="sales-navigator-title"
-          className="h1-header sales-navigator__title uppercase"
+          className="
+            h1-header 
+            sales-navigator__title 
+            uppercase"
         >
           Znajdź mieszkanie
         </h1>

@@ -1,50 +1,61 @@
 @use 'sass:color';
 
+ // =========================
+ // Neutral colors
+ // =========================
+
 $color-white: white;
-$color-darkWhite: rgb(204, 204, 204);
-$color-smokeWhite: rgb(232, 228, 228);
-$color-veryLightGrey: rgb(226, 226, 226);
-$color-lightGrey: rgb(153, 153, 153);
-$color-darkGrey: rgb(40, 40, 40);
-$color-choco: rgb(227, 217, 196);
+$color-light-gray: rgb(204, 204, 204);
+$color-smoke-white: rgb(232, 228, 228);
+$color-very-light-grey: rgb(226, 226, 226);
+$color-light-grey: rgb(153, 153, 153);
+$color-dark-grey: rgb(40, 40, 40);
+$color-black: rgb(40, 40, 40);
+
+ // =========================
+ // Text colors
+ // =========================
+
 $color-text: rgb(68, 68, 68);
-$color-veryLightBlue: rgb(210, 239, 249);
-$color-fontLight: rgb(122, 122, 122);
-$color-orangeBrown: rgb(194, 133, 98);
-$color-statusSold: rgba(255, 72, 0, 0.885);
-$color-statusReserved: rgba(255, 234, 7, 0.885);
-$color-statusAvailable: rgba(11, 233, 11, 0.885);
+$color-font-light: rgb(122, 122, 122);
+
+ // =========================
+ // Brand colors
+ // =========================
+
+$color-choco: rgb(227, 217, 196);
+$color-very-light-blue: rgb(210, 239, 249);
+$color-orange-brown: rgb(194, 133, 98);
+
+ // =========================
+ // Status colors
+ // =========================
+
+$color-status-Sold: rgba(255, 72, 0, 0.885);
+$color-status-Reserved: rgba(255, 234, 7, 0.885);
+$color-status-Available: rgba(11, 233, 11, 0.885);
+
+ // =========================
+ // CSS custom properties
+ // =========================
 
 :root {
-    --color-white: white;
-    --color-smokeWhite: rgb(232, 228, 228);
-    --color-veryLightGrey: rgb(226, 226, 226);
-    --color-lightGrey: rgb(153, 153, 153);
-    --color-darkGrey: rgb(40, 40, 40);
-    --color-black: rgb(40, 40, 40);
-    --color-choco: rgb(227, 217, 196);
-    --color-fontLight: rgb(122, 122, 122)
-    //--color-text: rgb(68, 68, 68);
-    --color-veryLightBlue: rgb(210, 239, 249);
-    --color-orangeBrown: rgb(227, 132, 79);
-    --color-statusSold: rgba(255, 72, 0, 0.885);
-    --color-statusReserved: rgba(255, 234, 7, 0.885);
-    --color-statusAvailable: rgba(11, 233, 11, 0.885);
-  }
+  --color-white: #{$color-white};
+  --color-light-gray: #{$color-light-gray};
+  --color-smoke-white: #{$color-smoke-white};
+  --color-very-light-grey: #{$color-very-light-grey};
+  --color-light-grey: #{$color-light-grey};
+  --color-dark-grey: #{$color-dark-grey};
+  --color-black: #{$color-black};
 
+  --color-text: #{$color-text};
+  --color-font-light: #{$color-font-light};
 
-  .text-white {
-    color: var(--color-smokeWhite);
-  }
+  --color-choco: #{$color-choco};
+  --color-very-light-blue: #{$color-very-light-blue};
+  --color-orange-brown: #{$color-orange-brown};
 
-  .text-black {
-    color: var(--color-black);
-  }
-
-  .background-white {
-    background-color: var(--color-white);
-  }
-
-  .background-black {
-    background-color: var(--color-black);
-  }
+  --color-status-Sold: #{$color-status-Sold};
+  --color-status-Reserved: #{$color-status-Reserved};
+  --color-status-Available: #{$color-status-Available};
+}

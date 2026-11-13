@@ -1,7 +1,7 @@
 import { useEffect, useState } from 'react';
 import Header from './Header';
 import HeaderMobile from './HeaderMobile';
-import './header.scss';
+//import './header.scss';
 
 const HeaderLayout = () => {
 const [isDesktop, setIsDesktop] = useState(() =>
