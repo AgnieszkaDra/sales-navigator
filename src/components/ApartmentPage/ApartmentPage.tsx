@@ -8,8 +8,10 @@ import Pagination from "../../ui/Pagination";
 import { getFloorPlan } from "../../utils/getFloorPlan";
 
 const ApartmentPage = () => {
-    const { id } = useParams();
+    const { slugAndId } = useParams();
 
+    const id = slugAndId?.split("-").pop();
+    
     const [property, setProperty] = useState<Property | null>(null);
     const [floorPlanUrl, setFloorPlanUrl] = useState<string | null>(null);
     const [activeTab, setActiveTab] = useState("floorPlan");

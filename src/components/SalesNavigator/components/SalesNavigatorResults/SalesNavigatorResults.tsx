@@ -42,7 +42,7 @@ const SalesNavigatorResultCard = ({
 }) => {
   const title = item.title || item.name || `Mieszkanie ${item.id}`;
   const slug = slugify(item.title || item.name || "") || item.id;
-  const offerPath = `/oferta/${slug}`;
+  const offerPath = `/oferta/${slug}-${item.id}`;
 
   return (
     <div 
