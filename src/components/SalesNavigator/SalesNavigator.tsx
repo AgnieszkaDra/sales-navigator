@@ -29,8 +29,14 @@ const SalesNavigator = () => {
 
   const listRef = useRef<HTMLDivElement | null>(null);
 
-  const [draft, setDraft] = useState<DraftFilters>(initialFilters);
-  const [filters, setFilters] = useState<DraftFilters>(initialFilters);
+   // Stan filtrów
+  const [draft, setDraft] = useState<DraftFilters>(
+    () => ({ ...initialFilters })
+  );
+
+  const [filters, setFilters] = useState<DraftFilters>(
+    () => ({ ...initialFilters })
+  );
   const [showMoreFilters, setShowMoreFilters] = useState(false);
 
   // Aktualizacja pojedynczego filtra
@@ -55,13 +61,23 @@ const SalesNavigator = () => {
     [properties, filters]
   );
 
+  // Zastosowanie filtrów i przewinięcie do wyników
+  const handleSearch = () => {
+    setFilters(draft);
+
+    listRef.current?.scrollIntoView({
+      behavior: "smooth",
+    });
+  };
+
   if (!properties) {
     return <p>Ładowanie...</p>;
   }
 
   return (
-    <section
-      className="sales-navigator section"
+    <section className="
+      sales-navigator 
+      section"
       aria-labelledby="sales-navigator-title"
     >
       <div className="elementor-container">
@@ -131,6 +147,7 @@ const SalesNavigator = () => {
         {/* Dodatkowe filtry */}
         {showMoreFilters && (
           <div
+            id="extra-filters"
             className="
               filters__more
               grid
@@ -152,23 +169,33 @@ const SalesNavigator = () => {
         )}
 
         {/* Przyciski */}
-        <div className="sales-navigator__actions padding-top-standard">
+        <div className="
+          sales-navigator__actions 
+          padding-top-standard
+        ">
           <button
-            className="more-filters-button btn padding-item"
-            onClick={() => setShowMoreFilters((prev) => !prev)}
+            type="button"
+            className="
+              more-filters-button 
+              btn 
+              padding-item
+            "
+            onClick={() =>
+              setShowMoreFilters((prev) => !prev)
+            }
             aria-expanded={showMoreFilters}
           >
             {showMoreFilters ? "Mniej filtrów" : "Więcej filtrów"}
           </button>
 
           <button
-            className="search-button btn padding-item"
-            onClick={() => {
-              setFilters(draft);
-              listRef.current?.scrollIntoView({
-                behavior: "smooth",
-              });
-            }}
+            type="button"
+            className="
+              search-button 
+              btn 
+              padding-item
+            "
+            onClick={handleSearch}
           >
             Szukaj
           </button>
