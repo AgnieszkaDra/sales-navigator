@@ -1,10 +1,10 @@
 //import { z } from "zod";
 
-export const STATUS_LABELS = {
-  available: "Dostępny",
-  reserved: "Zarezerwowany",
-  sold: "Sprzedany",
-} as const;
+// export const STATUS_LABELS = {
+//   available: "Dostępny",
+//   reserved: "Zarezerwowany",
+//   sold: "Sprzedany",
+// } as const;
 
 
 //export const statusEnum = z.enum(["available", "reserved", "sold"]);

@@ -21,7 +21,7 @@ import type { DraftFilters } from "./schemas/filters";
 
 import { filterProperties } from "./utils/filterProperties";
 
-import "../../styles/sales-navigator.scss";
+import "./styles/_index.scss";
 
 const SalesNavigator = () => {
   

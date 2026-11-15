@@ -167,9 +167,8 @@ console.log("Render CustomSelect:", value);
         type="button"
         className={`
           custom-select__trigger 
-          padding-item 
-          text-light
-          background-white
+          padding-item
+          text-font-light
           ${open ? "is-open" : ""}
         `}
         onClick={() => setOpen((prev) => !prev)}
